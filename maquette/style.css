@@ -1,0 +1,413 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap');
+
+
+. {
+    padding:0;
+    text-decoration: 0;
+    list-style: none;
+    scroll-behavior: smooth;
+    margin : 0;
+    font-family: 'Lato', sans-serif;
+}
+
+
+/* 1er page */
+body .page1 {
+    overflow-x: hidden;
+    margin: 20px 80px;
+    /*max-width: 920px;*/
+}
+
+/* En tete */
+
+.page1 header {
+    display: flex; /* aligner les elements*/
+    flex-wrap: wrap; /* adapter la resolution de l'ecran */
+    justify-content: space-between;  /* Espacer les elements*/
+    position:fixed; /* fixe*/
+    background-color: white;
+    padding: 10px 0px;
+}
+
+.page1 .item {
+    display: flex; /* aligner les elements*/
+    flex-wrap: wrap; /* adapter la resolution de l'ecran */
+    margin-left: 450px;
+}
+
+.page1 .item p {
+    margin-right: 15px;
+}
+
+.page1 .item p i {
+    cursor: pointer;
+    font-size: 22px;
+    color: black ;
+}
+
+.page1 .compte {
+    margin-right: 100px;
+}
+
+.page1 .compte button {
+    padding:13px 20px;
+    border:none;
+    font-size: 13px;
+    cursor:pointer;
+    outline: none; /* contour du bouton  */
+    border-radius: 5px;
+}
+
+.page1 .login {
+    background-color: inherit; /* prend la couleur du fond*/
+    margin-right: 10px;
+    color: #8F8F8F;
+}
+
+.page1 .login:hover {
+    color:black;
+}
+
+.page1 .register {
+    background-color: purple;
+    margin-right: 10px;
+    color: white;
+}
+
+.page1 .register:hover {
+    background-color: rgba(255, 192, 227, 0.692);
+    color: black;
+}
+
+.page1 hr {
+    margin-right : 80px;
+    top:120px;
+	width : 1200px;
+    color:black;
+}
+
+/* debut onglet */
+.page1 header h1{
+    font-size: 30px;
+    cursor: pointer;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+.page1 .menu {
+    display: flex;
+    flex-wrap: wrap; /* Aligner les onglets */
+}
+
+.menu a {
+    transition: all 1s; 
+    text-decoration: none;   
+    color:black;
+}
+
+/*
+.menu a::after { /* Mettre une fleche
+    content: '❯';
+    margin-left: 7px;
+}
+
+/* Animation fleche
+@keyframes anime_fleche {
+    0% {
+      transform: rotate(0deg);
+    }
+    100%{
+      transform: rotate(90deg);
+    }
+}
+
+nav .menu ul:hover < a {
+    animation: anime_fleche 0.2s linear forwards;
+  }
+ /*Fin animation fleche 
+
+*/
+
+.page1 header ul li {
+    position:relative;
+    flex: 1; /* largeur s'adapte automatiquement aux li*/
+    padding: 5px;
+    color: #8f8f8f;
+}
+
+.page1 .onglet {
+    font-size: 20px ;
+    margin-right: 15px; /* Espacer les différents onglets */
+    cursor: pointer;
+}
+.page1 .link {
+    overflow: hidden;
+    max-height: 0; /* Cache les onglets */
+}
+
+.page1 form input {
+    margin-top: 12px;
+    margin-left: 90px;
+    padding : 10px;
+    border-style:none;
+    border-radius: 0;
+    background-color:rgba(128, 128, 128, 0.07);
+}
+
+.page1 form button {
+    position: static;
+    border:none;
+    cursor:pointer;
+    background-color:rgba(128, 128, 128, 0.07);
+    padding: 5px;
+    color:black;
+    margin-left: 0px;
+    border-radius: 0;
+    padding : 9.2px;
+    bottom: 87px;
+    font-family:Lato;
+}
+
+.page1 form button:hover {
+    font-weight: bold;
+    color : black;
+    background-color: rgb(255, 255, 255);
+}
+
+
+.page1 header .menu ul a:hover { /*  colore l'onglet pointé par la souris*/
+    /*color: red;*/
+    background-size: 100% 100%; 
+}
+
+.page1 header .menu ul:active { /* a revoir */
+    color:#ff0000;
+}
+
+.page1 header .menu ul:hover {
+    transform:scale(1.1); /* effet zoom sur les onglet*/
+    transition: 0.3s all;
+}
+
+/* Effet soulignement */
+.page1 header .menu ul a {
+    text-decoration: none;
+    background: linear-gradient(to top, black 0%, black 10%, transparent 10.01%) no-repeat left bottom / 0 100%;
+    transition: background-size 1s;
+  }
+/* Fin Effet soulignement */
+
+.page1 header .menu ul li:hover { /*  colore le sous onglet pointé par la souris*/
+    color: rgba(255, 0, 0, 0.5);
+    background-color: rgba(128, 128, 128, 0.05);
+}
+
+@keyframes onglet {
+    0% {
+      border:none;
+    }
+    30% {
+    }
+    100% {
+      max-height: 50em;
+      border:none;
+    }
+  }
+
+.page1 .onglet:hover > .link {
+    animation: onglet 1s forwards;
+  }
+
+
+.page1 header i:hover {
+    z-index:10; /* Mettre en avant  (positon)*/
+    transform:scale(1.4); /* effet zoom icone */
+    transition: 0.3s all;
+}
+
+            /* Fin en tete */
+
+            
+
+
+             /* SLIDER */
+
+.page1 .slider {
+    overflow : hidden;
+    position: static;
+    top:0;
+}
+
+@keyframes glisse {
+    0% {
+        transform: translate(0); 
+    }
+    10% {
+        transform: translate(0);
+    }
+
+    33% {
+        transform: translate(-500px);
+    }
+    
+    66% {
+        transform: translate(-800px);
+    }
+
+    100% {
+        transform: translate(0);
+    }
+}
+
+.page1 .slider IMG {
+    width:  300px;
+}
+
+.page1 .slides {
+    display: flex; 
+    align-items: center;
+    flex-direction: row;
+    width: calc(500px*4);
+    animation: glisse 20s infinite ease;
+    height: 720px;
+}
+.page1 .slide {
+    float:left;
+    opacity: 0.7;
+}
+*/
+            /* FIN SLIDER */
+
+
+            /* Garantie */
+
+.page1 .garantie {
+   /* background-color: rgb(128, 128, 128,0.1);*/
+    font-size: 20px;
+    margin-bottom: 0px;
+}
+.page1 .garanties {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-right: 5px;
+}
+
+.page1 .garanties i {
+    font-size: 35px;
+    color:black; /* couleur des items*/
+    margin-right: 4px;
+}
+
+.page1 .garantie .garanties p br {
+    top:0px;
+    color: rgb(128, 128, 128,0.1);
+}
+
+            /* Fin Garantit */
+
+
+            
+             /* Pied de page */
+footer {
+    margin-top: 100px;
+    padding: 25px 100px;
+    background-color: black;
+    color: #828282;
+}
+
+.pied_page {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.pied_page .colonne p:hover {
+    color : white;
+}
+
+
+footer .social {
+    display: flex;
+    flex-wrap: wrap; 
+    margin-left: 83%;
+    margin-top: 2%;
+}
+
+footer .social i:hover{
+    transform:scale(1.2); /* effet zoom sur les reseaux*/
+    transition: 0.3s all;
+    border: 2px solid white;
+    background-color: white;
+    font-size: 16px;
+}
+
+footer .social .facebook i:hover {
+    color: #3b5998; 
+}
+
+footer .social .linkedin i:hover {
+    color : #0077b5;
+}
+
+footer .social .instagram i:hover {
+    color : #3f729b;
+}
+
+footer .social .twitter i:hover {
+    color : #00acee;
+}
+
+footer .social i {
+    margin-right: 13px; /* espacement entre les icone */
+    cursor: pointer;
+    border: 1px solid #828282;
+    border-radius: 100%;
+    padding: 10px;
+    text-align: center;
+    font-size: 12px;
+    cursor: pointer;
+    color: #828282;
+}
+
+/*
+footer .payer {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+footer .payer i {
+    margin-right: 10px;
+}
+*/
+
+.fin {
+    font-size: 13px;
+}
+             /* Fin Pied de page */
+
+/* FIN 1er page */
+
+/* Formulaire connexion */
+body .connexion {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f5f5f5;
+
+}
+
+.connexion form {
+    background-color: white;
+    padding: 40px 60px;
+    min-width: 350px;
+    margin-top: 20px;
+}
+
+/* FIN Formulaire connexion */
+
+
+
+/* gerer la resolution de l'ecran */             
+@media screen and (max-width : 600px) {
+    
+}
