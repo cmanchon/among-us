@@ -1,6 +1,42 @@
+*{
+    font-family: Roboto;
+    background: #000;
+}
+
+header{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
 hr {
     margin-right : 80px;
     top:120px;
 	width : 1200px;
     color:black;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+#title{
+    padding: 1%;
+}
+
+form{
+    width: 50%;
+    margin: auto;
+    text-align: center;
+    padding: 20px;
+}
+
+form input{
+    margin: 20px;
+}
+
+#submit{
+    padding : 15px;
+    cursor: pointer;
 }
