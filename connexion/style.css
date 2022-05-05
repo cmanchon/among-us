@@ -1,12 +1,15 @@
 *{
     font-family: Roboto;
-    background: #000;
 }
 
 header{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+}
+
+h2{
+    padding:1%;
 }
 
 hr {
@@ -19,6 +22,15 @@ hr {
 a {
     text-decoration: none;
     color: black;
+}
+
+#delete_btn{
+    background-color: red;
+    padding: 10px;
+    border-radius: 15px;
+    border-style:outset;
+    border-color: rgb(246, 72, 72);
+    color:white;   
 }
 
 #title{
@@ -39,4 +51,14 @@ form input{
 #submit{
     padding : 15px;
     cursor: pointer;
+}
+
+#users_table{
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+
+#users_table td{
+    border:solid black 1px;
+    padding : 20px;
 }

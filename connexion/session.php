@@ -14,11 +14,14 @@
             require("./open_session.php");  
             if (isset($_SESSION["login"]) && isset($_SESSION["password"])){
                 echo '<h2><a href="./session.php">Ma session</a></h2>
-        <h2><a href="./logout.php">Déconnexion</a></h2>';
+                <h2><a href="./logout.php">Déconnexion</a></h2>';
+                if ($_SESSION["login"]=="admin" && $_SESSION["password"]=="admin"){
+                    echo '<h2><a href="./admin.php">Admin</a></h2>';
+                }
             }
             else{
                 echo '<h2><a href="./signup.php">S\'inscrire</a></h2>
-        <h2><a href="./login.php">Se connecter</a></h2>';
+                <h2><a href="./login.php">Se connecter</a></h2>';
             }
         ?>
     </header>
@@ -29,27 +32,32 @@
             echo "login : ".$_SESSION["login"]."<br>mot de passe : ".$_SESSION["password"]."<br>SID : ".session_id();
             echo '
             <br><br><br>
-            <input type="submit" value="effacer mon compte" id="delete">
-            <script lang="JavaScript/text">
-                    document.querySelector("#delete").addEventListener("click", ()=>{
-                        const result = confirm("Êtes vous sûr.e de vouloir supprimer votre compte ?");
-                    })
-            </script>
+            <form method="POST">
+                <input type="submit" value="effacer mon compte" id="delete" name="delete-btn">
+            </form>
             ';
-            $link = mysqli_connect("localhost", "root", "");
-            mysqli_select_db($link, "among_us");
-            $result = json_encode($result);
-            if ($result){
-                $delete_request = "DELETE FROM users WHERE identifiant = \"".$_SESSION["login"]."\"";
-                    $result = mysqli_query($link, $delete_request);
-                    if ($result) echo "compte supprimé.";
+            if (isset($_POST["delete-btn"])){
+                echo '<script lang="JavaScript/text">
+                const result = confirm("Êtes vous sûr.e de vouloir supprimer votre compte ?");
+                </script>';
+                $link = mysqli_connect("localhost", "root", "");
+                mysqli_select_db($link, "among_us");
+                $result = json_encode($result);
+                if ($result){
+                    $delete_request = "DELETE FROM users WHERE identifiant = \"".$_SESSION["login"]."\"";
+                    //$result = mysqli_query($link, $delete_request);
+                    if ($result) echo "compte supprimé."; //faudra déconnecter
                     else echo "votre compte n\'a pas pu être supprimé";
+                }
+                mysqli_close($link);
             }
+
             
         }
         else{
             echo "La session précédente a été détruite.";
         }
+
     ?>
 </body>
 </html>

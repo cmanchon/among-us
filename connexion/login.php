@@ -14,11 +14,14 @@
             require("./open_session.php");  
             if (isset($_SESSION["login"]) && isset($_SESSION["password"])){
                 echo '<h2><a href="./session.php">Ma session</a></h2>
-        <h2><a href="./logout.php">Déconnexion</a></h2>';
+                <h2><a href="./logout.php">Déconnexion</a></h2>';
+                if ($_SESSION["login"]=="admin" && $_SESSION["password"]=="admin"){
+                    echo '<h2><a href="./admin.php">Admin</a></h2>';
+                }
             }
             else{
                 echo '<h2><a href="./signup.php">S\'inscrire</a></h2>
-        <h2><a href="./login.php">Se connecter</a></h2>';
+                <h2><a href="./login.php">Se connecter</a></h2>';
             }
         ?>
     </header>
@@ -57,4 +60,6 @@
             echo "erreur de connexion.";
         }
     }
+    mysqli_close($link);
+
 ?>
