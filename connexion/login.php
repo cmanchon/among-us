@@ -51,6 +51,7 @@
                 $_SESSION["password"]=$_POST["password"];
                 $_SESSION["userId"]=session_id();
                 $_SESSION["compteur"]=0;
+                $_SESSION["id"] = mysqli_fetch_assoc(mysqli_query($link, "SELECT id FROM users WHERE identifiant='".$_SESSION['login']."'"))["id"];
                 header("Refresh:0, url=session.php");
                 echo "t'es connecté";
                 $connected = true;

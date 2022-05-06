@@ -31,6 +31,7 @@ a {
     border-style:outset;
     border-color: rgb(246, 72, 72);
     color:white;   
+    cursor: pointer;
 }
 
 #title{

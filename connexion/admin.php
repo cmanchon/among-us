@@ -44,7 +44,6 @@
         else{
             echo "La session précédente a été détruite.";
         }
-        mysqli_close($link);
     ?>
 </body>
 </html>

@@ -27,12 +27,23 @@
             ?>
     </header>
     <hr>
+
+            
         <?php
             $link = mysqli_connect("localhost", "root", "");
             mysqli_select_db($link, "among_us");
-            $delete_request = "DELETE FROM users WHERE id = ". $_GET["id"];
+            if (!isset($_GET["id"])){
+                $delete_request = "DELETE FROM users WHERE id = ". $_SESSION["id"];
+            }
+            else{
+                $delete_request = "DELETE FROM users WHERE id = ". $_GET["id"];
+            }
             if (mysqli_query($link, $delete_request)){
                 echo "account deleted succesfully";
+                if ($_SESSION["login"]!="admin"){
+                    setcookie("sid", SID, 1);                   //unset the cookie
+                    session_destroy();
+                }
             }
             else{
                 echo "could not delete this account.";

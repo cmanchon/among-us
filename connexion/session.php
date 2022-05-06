@@ -29,27 +29,19 @@
 
     <?php
         if (isset($_SESSION["login"]) && isset($_SESSION["password"])){
-            echo "login : ".$_SESSION["login"]."<br>mot de passe : ".$_SESSION["password"]."<br>SID : ".session_id();
+            echo "login : ".$_SESSION["login"]."<br>mot de passe : ".$_SESSION["password"]."<br>ID : ".$_SESSION['id'];
             echo '
             <br><br><br>
             <form method="POST">
-                <input type="submit" value="effacer mon compte" id="delete" name="delete-btn">
+                <input type="submit" value="effacer mon compte" id="delete_btn" name="delete-btn">
             </form>
             ';
             if (isset($_POST["delete-btn"])){
                 echo '<script lang="JavaScript/text">
-                const result = confirm("Êtes vous sûr.e de vouloir supprimer votre compte ?");
-                </script>';
-                $link = mysqli_connect("localhost", "root", "");
-                mysqli_select_db($link, "among_us");
-                $result = json_encode($result);
-                if ($result){
-                    $delete_request = "DELETE FROM users WHERE identifiant = \"".$_SESSION["login"]."\"";
-                    //$result = mysqli_query($link, $delete_request);
-                    if ($result) echo "compte supprimé."; //faudra déconnecter
-                    else echo "votre compte n\'a pas pu être supprimé";
+                if(confirm("Êtes vous sûr.e de vouloir supprimer votre compte ?")){
+                    document.location.href ="./delete.php";
                 }
-                mysqli_close($link);
+                </script>';
             }
 
             
