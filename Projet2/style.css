@@ -1265,7 +1265,7 @@ body .produits_similaire .produit {
     width: 9%;
 }
 
-.presentation_produits  .ajout button {
+.presentation_produits  .ajout button, #add_or_buy {
     border: none;
     padding: 15px 60px;
     color : white;
@@ -1277,10 +1277,15 @@ body .produits_similaire .produit {
     opacity: 0.9;
 }
 
-.presentation_produits  .ajout button:hover {
+.presentation_produits  .ajout button:hover, #add_or_buy:hover  {
     opacity: 1;
     background-color: rgb(248, 10, 0);
     box-shadow: 0 0 0;
+    transition: 0.3s;
+}
+
+.ajout p{
+    margin-top: 20px;
 }
 
 .presentation_produits .details {
@@ -1789,7 +1794,7 @@ body .panier .container-panier .achats .details p {
     margin-right: 120px;
 }
 
-body .panier .container-panier .achats .container .panier_vide {
+body .panier .container-panier .achats .container .panier_vide{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -1854,6 +1859,16 @@ body .panier .container-panier .recap input {
     font-weight: bolder;
     opacity: 0.3;
     cursor:not-allowed ;
+}
+
+.panier_non_vide{
+    background-color: #1a1a1a0a;
+    /* margin-top: 100px; */
+    padding: 40px;
+}
+
+#cart_table td{
+    padding:20px;
 }
 
 
