@@ -10,9 +10,9 @@
         else 
             echo "<p>Une erreur a empêché votre produit d'être retiré du panier.</p>";
     }
-    // header("Location : ../Projet2/Panier.php");
-
+    // header("Location : ../pages/Panier.php");
+    mysqli_query($link, "DELETE FROM carts WHERE quant = 0");
 ?>
 <script lang="JavaScript">
-    window.location.replace("../Projet2/Panier.php");
+    window.location.replace("../pages/Panier.php");
 </script>

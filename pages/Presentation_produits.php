@@ -9,13 +9,14 @@
     <script src="https://kit.fontawesome.com/ffb4a8c022.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css"/>
     <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
-    <title>Présentation_produits</title>
     <link rel="shortcut icon" type="image/x-icon" href="favicon_io/apple-touch-icon.png"/>
     <?php require("../connexion/open_session.php");
-    $IDDET = 16;            //ID de ce produit, à modifier pour modifier le titre et le prix
+    if (isset($_GET["id"])) $IDDET = $_GET["id"];
+    else $IDDET = 9;            //ID de ce produit, à modifier pour modifier le titre et le prix
     $link = mysqli_connect("localhost", "root", "");
     mysqli_select_db($link, "among_us");
     $current_product = mysqli_fetch_assoc(mysqli_query($link, "SELECT * FROM products WHERE IDDET=".$IDDET));
+    echo '<title>'.$current_product["NAME"].'</title>';
     ?>
 </head>
 <body>
@@ -25,7 +26,7 @@
         <!--headTOP-->
         <div class ="head-top">
             <div class="promo">
-                <p><strong>OFFRE SPECIAL </strong>Pack 6 mini CREWMATE LÉGENDAIRES</p>
+                <p><strong>OFFRE SPECIALE </strong>Pack 6 mini CREWMATE LÉGENDAIRES</p>
             </div>
 
             <div class ="monnaie">
@@ -49,7 +50,7 @@
 
         <!--header-principal-->
         <div class="header-principal">
-            <a href="Accueil.html" class="logo"><img src="images/Logo/49EF6F10-40D3-4537-8833-819406CB00D2.webp"></a>
+            <a href="Accueil.php" class="logo"><img src="images/Logo/49EF6F10-40D3-4537-8833-819406CB00D2.webp"></a>
 
             <form class="recherche">
                 <input type="search" placeholder="Rechercher des produits" id="search">
@@ -62,7 +63,7 @@
             <div class="item">
                 <a href="#"><i class="fa-solid fa-moon"></i></a>
                 <a href="#"><i class="fa-regular fa-heart"></i></a>
-                <a href="#"><i class="fa-solid fa-basket-shopping"></i></a>
+                <a href="./Panier.php"><i class="fa-solid fa-basket-shopping"></i></a>
                 <a href="#"><i class="fa-solid fa-user"></i></i></a>
             </div>
         </div>
@@ -112,7 +113,7 @@
     <div class="galerie">
         <div class="presentation_produits">
             <div class="container">
-                <img src="images/Produits/cyan1.jpg">
+                <?php echo '<img src="images/Produits_IDDET/'.$IDDET.'.jpg">';?>
             </div>
 
             <div class="details">
@@ -152,7 +153,9 @@
                         <input type="submit" value="Ajouter au panier" id="add_or_buy" name="add_to_cart">
                         <input type="submit" value="Achetez maintenant" id="add_or_buy" name="buy_now">
                     </form>
-                    <?php require("../gestion_produits/ajout_panier.php");?>             
+                    <?php 
+                        if (isset($_POST["add_to_cart"]))
+                            require("../gestion_produits/ajout_panier.php");?>             
                 </div>
 
                 
@@ -160,7 +163,7 @@
         </div>
 
         <div class="produits_similaire">
-            <div class= "container produit">
+            <!-- <div class= "container produit">
                 <a href="#"><img src="images/Produits/blanc.jpg"></a>
             </div>
             <div class="container produit">
@@ -171,7 +174,33 @@
             </div>
             <div class="container produit">
                 <a href="" class=""><img src="images/Produits/rose.jpg"></a>
-            </div>
+            </div> -->
+            <?php
+                if ($IDDET>=5 && $IDDET<=10){
+                    $id_of_plushes = \array_diff(range(5, 10), [$IDDET]);
+                    shuffle($id_of_plushes);
+                    array_pop($id_of_plushes);
+                    foreach ($id_of_plushes as $i){
+                        echo ' 
+                        <div class="container produit">
+                            <a href="./Presentation_produits?id='.$i.'" class=""><img src="images/Produits_IDDET/'.$i.'.jpg"></a>
+                        </div>
+                        ';
+                    }
+                }
+                else {
+                    $all_ids =\array_diff(range(1, 34), [17, 18, 19, 20, 24, 25, 26, 27, 28, 29, 30, $IDDET]);
+                    shuffle($all_ids);
+                    for ($i = 0 ; $i<4 ; $i++){
+                        echo ' 
+                        <div class="container produit">
+                            <a href="./Presentation_produits?id='.$all_ids[$i].'" class=""><img src="images/Produits_IDDET/'.$all_ids[$i].'.jpg"></a>
+                        </div>
+                        ';
+                    }
+
+                }
+            ?>
         </div>
         
     </div>

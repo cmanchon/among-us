@@ -42,7 +42,7 @@
 
         <!--header-principal-->
         <div class="header-principal">
-            <a href="Accueil.html" class="logo"><img src="images/Logo/49EF6F10-40D3-4537-8833-819406CB00D2.webp"></a>
+            <a href="Accueil.php" class="logo"><img src="images/Logo/49EF6F10-40D3-4537-8833-819406CB00D2.webp"></a>
 
             <form class="recherche">
                 <input type="search" placeholder="Rechercher des produits" id="search">
@@ -55,7 +55,7 @@
             <div class="item">
                 <a href="#"><i class="fa-solid fa-moon"></i></a>
                 <a href="#"><i class="fa-regular fa-heart"></i></a>
-                <a href="#"><i class="fa-solid fa-basket-shopping"></i></a>
+                <a href="./Panier.php"><i class="fa-solid fa-basket-shopping"></i></a>
                 <a href="#"><i class="fa-solid fa-user"></i></i></a>
             </div>
         </div>

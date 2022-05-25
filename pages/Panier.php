@@ -28,7 +28,7 @@
                         <h4>Site sécurisé   <i class="fa-solid fa-lock"></i></h4>
                     </div>
                     <div class="continuer_achat">
-                        <a href="Accueil.html">CONTINUER MES ACHATS <i class="fa-solid fa-chevron-right"></i></a>
+                        <a href="Accueil.php">CONTINUER MES ACHATS <i class="fa-solid fa-chevron-right"></i></a>
                     </div>
                 </div>
             </div>
@@ -90,7 +90,8 @@
                             $total_price = 0;
                             while ($row = mysqli_fetch_assoc($cart_table)){
                                 echo "<tr><td>";
-                                echo $row["NAME"]."</td><td>".(intval($row["PRICE"])/100)."</td><td>".$row["quant"]."</td><td>".(intval($row["total_price"])/100)."</td>";
+                                echo '<a href="Presentation_produits?id='.$row["product_id"].'" id ="product_name">'.$row["NAME"]."</a>";
+                                echo "</td><td>".(intval($row["PRICE"])/100)."</td><td>".$row["quant"]."</td><td>".(intval($row["total_price"])/100)."</td>";
                                 $total_price += intval($row["total_price"]);
                                 echo "<td><a href='../gestion_produits/soustraction_panier.php?id=".$row["product_id"]."' id='remove_product_btn'> -1 </a></td><td><a href='../gestion_produits/ajout_panier.php?id=".$row["product_id"]."' id='remove_product_btn'> +1 </a></td>";
                                 echo "</tr>";
