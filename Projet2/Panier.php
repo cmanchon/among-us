@@ -78,7 +78,7 @@
                         else{
                             //panier non vide
                             echo '<div class="panier_non_vide">';
-                            $cart_table = mysqli_query($link, "SELECT products.NAME, products.PRICE, carts.quant, carts.total_price FROM carts JOIN products ON carts.product_id=products.IDDET");
+                            $cart_table = mysqli_query($link, "SELECT products.NAME, products.PRICE, carts.quant, carts.total_price, carts.product_id FROM carts JOIN products ON carts.product_id=products.IDDET");
                             // echo "<br><br>";
                             echo '<table id="cart_table">';
                             echo '<div class="details">
@@ -92,6 +92,7 @@
                                 echo "<tr><td>";
                                 echo $row["NAME"]."</td><td>".(intval($row["PRICE"])/100)."</td><td>".$row["quant"]."</td><td>".(intval($row["total_price"])/100)."</td>";
                                 $total_price += intval($row["total_price"]);
+                                echo "<td><a href='../gestion_produits/soustraction_panier.php?id=".$row["product_id"]."' id='remove_product_btn'> -1 </a></td><td><a href='../gestion_produits/ajout_panier.php?id=".$row["product_id"]."' id='remove_product_btn'> +1 </a></td>";
                                 echo "</tr>";
                             }
 

@@ -12,7 +12,7 @@
     <title>Présentation_produits</title>
     <link rel="shortcut icon" type="image/x-icon" href="favicon_io/apple-touch-icon.png"/>
     <?php require("../connexion/open_session.php");
-    $IDDET = 16;            //ID de ce produit, à modifier ppour modifier le titre et le prix
+    $IDDET = 16;            //ID de ce produit, à modifier pour modifier le titre et le prix
     $link = mysqli_connect("localhost", "root", "");
     mysqli_select_db($link, "among_us");
     $current_product = mysqli_fetch_assoc(mysqli_query($link, "SELECT * FROM products WHERE IDDET=".$IDDET));
@@ -126,7 +126,14 @@
                 </a></h6>
                 <h3><?php echo $current_product["NAME"];?></h3>
                 <h2><?php echo (intval($current_product["PRICE"])/100)."€";?></h2>
-
+                <br><?php 
+                        $customer_info = mysqli_fetch_assoc(mysqli_query($link, "SELECT * FROM carts WHERE product_id=".$IDDET));
+                        if (isset($customer_info) && isset($_SESSION['login']) && isset($_SESSION['password'])){
+                            echo "Actuellement <b>";
+                            echo $customer_info["quant"]."</b> dans le panier";
+                            
+                        }
+                    ?>           
                 <div class="description">
                     <h3>Description</h3>
                     <p> jkzkzkjflkjMAF dzjbfjbl bzjHBLJB JBJLBZFJBZZJBFJ FBJZJLHJZ ZBJLF <br>

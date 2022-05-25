@@ -1871,6 +1871,21 @@ body .panier .container-panier .recap input {
     padding:20px;
 }
 
+#remove_product_btn{
+    background-color: #4c4c4c;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 2px black;
+}
+
+#remove_product_btn:hover{
+    background-color: #626262;    
+    transition:0.3s;
+    box-shadow: 1px 1px 1px black;
+
+    
+}
 
 /* FIN Panier */
 
