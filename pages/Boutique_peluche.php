@@ -20,7 +20,7 @@
         <!--headTOP-->
         <div class ="head-top">
             <div class="promo">
-                <p><strong>OFFRE SPECIAL </strong>Pack 6 mini CREWMATE LÉGENDAIRES</p>
+                <p> <a href="./Presentation_produits.php?id=3"><strong>OFFRE SPECIAL </strong>Pack 6 mini CREWMATE LÉGENDAIRES</a></p>
             </div>
 
             <div class ="monnaie">
@@ -66,35 +66,35 @@
 
         <!-- Menu-->
         <nav class="menu">
-            <ul class="onglet"><a href="projet1.html">Accueil</a></ul>
-            <ul class="onglet"><a href="#">Peluches</a>
+            <ul class="onglet"><a href="./Accueil.php">Accueil</a></ul>
+            <ul class="onglet"><a href="./boutique.php?type=plush">Peluches</a>
+                <!-- <li class="link">BLABLA</li>
                 <li class="link">BLABLA</li>
                 <li class="link">BLABLA</li>
-                <li class="link">BLBLAB</li>
                 <li class="link">BLABLA</li>
-                <li class="link">BLABLA</li>
+                <li class="link">BLABLA</li> -->
             </ul>
-            <ul class="onglet"><a href="#">Cosplay</a>
-                <li class="link">Enfants</li>
-                <li class="link">Adultes</li>
+            <ul class="onglet"><a href="./boutique.php?type=cosplay">Cosplay</a>
+                <!-- <li class="link">Enfants</li>
+                <li class="link">Adultes</li> -->
 
             </ul>
-            <ul class="onglet"><a href="#">Vetements</a>
-                <li class="link">Sweets</li>
-                <li class="link">Tee-shirts</li>
-                <li class="link">Casquettes</li>
+            <ul class="onglet"><a href="./boutique.php?type=clothing">Vetements</a>
+                <li class="link"><a href="./Presentation_produits.php?id=21">Sweats</a></li>
+                <li class="link"><a href="./Presentation_produits.php?id=22">Tee-Shirt</a></li>
+                <li class="link"><a href="./Presentation_produits.php?id=23">Casquette</a></li>
             </ul>
-            <ul class="onglet" ><a href="#">Autres</a>
-                <li class="link">Mugs</li>
-                <li class="link">Stickers</li>
-                <li class="link">Tapis de<br> Souris</li>
+            <ul class="onglet" ><a href="./boutique.php?type=other">Autres</a>
+                <li class="link"><a href="./Presentation_produits.php?id=31">Mugs</a></li>
+                <li class="link"><a href="./Presentation_produits.php?id=23">Poster</a></li>
+                <li class="link"><a href="./Presentation_produits.php?id=34">Tapis de<br> Souris</a></li>
             </ul>
-            <ul class="onglet"><a href="#">Cadeaux</a>
-                <li class="link">BLABLA</li>
+            <ul class="onglet"><a href="./boutique.php?type=gift">Cadeaux</a>
+                <!-- <li class="link">BLABLA</li>
                 <li class="link">BLABLA</li>
                 <li class="link">BLBLAB</li>
                 <li class="link">BLABLA</li>
-                <li class="link">BLABLA</li>
+                <li class="link">BLABLA</li> -->
             </ul>
         </nav>
         <!-- FIN Menu-->
@@ -157,9 +157,13 @@
                     ?>
                 </div>
                 <div class="items">
-                    <a href="#"><i class="fa-regular fa-heart"></i></a>
-                    <a href="#"><i class="fa-solid fa-basket-shopping"></i></a>
-                    <a href="#"><i class="fa-solid fa-eye"></i></a>
+                    <?php 
+                    echo '
+                        <a href="#"><i class="fa-regular fa-heart"></i></a>
+                        <a href="../gestion_produits/ajout_panier.php?id='.$IDDET.'"><i class="fa-solid fa-basket-shopping"></i></a>
+                        <a href="Presentation_produits?id='.$IDDET.'"><i class="fa-solid fa-eye"></i></a>
+                    ';
+                    ?>
                 </div>
             </div>
             <div class="carte">
@@ -179,9 +183,9 @@
                 <div class="items">
                     <?php 
                     echo '
-                    <a href="#"><i class="fa-regular fa-heart"></i></a>
-                    <a href="../gestion_produits/ajout_panier.php?id='.$IDDET.'"><i class="fa-solid fa-basket-shopping"></i></a>
-                    <a href="Presentation_produits?id='.$IDDET.'"><i class="fa-solid fa-eye"></i></a>
+                        <a href="#"><i class="fa-regular fa-heart"></i></a>
+                        <a href="../gestion_produits/ajout_panier.php?id='.$IDDET.'"><i class="fa-solid fa-basket-shopping"></i></a>
+                        <a href="Presentation_produits?id='.$IDDET.'"><i class="fa-solid fa-eye"></i></a>
                     ';
                     ?>
                 </div>            
@@ -201,9 +205,13 @@
                     ?>
                 </div>
                 <div class="items">
-                    <a href="#"><i class="fa-regular fa-heart"></i></a>
-                    <a href="#"><i class="fa-solid fa-basket-shopping"></i></a>
-                    <a href="#"><i class="fa-solid fa-eye"></i></a>
+                    <?php 
+                        echo '
+                        <a href="#"><i class="fa-regular fa-heart"></i></a>
+                        <a href="../gestion_produits/ajout_panier.php?id='.$IDDET.'"><i class="fa-solid fa-basket-shopping"></i></a>
+                        <a href="Presentation_produits?id='.$IDDET.'"><i class="fa-solid fa-eye"></i></a>
+                    ';
+                    ?>
                 </div>            
             </div>
             <div class="carte">
@@ -221,9 +229,13 @@
                     ?>
                 </div>
                 <div class="items">
-                    <a href="#"><i class="fa-regular fa-heart"></i></a>
-                    <a href="#"><i class="fa-solid fa-basket-shopping"></i></a>
-                    <a href="#"><i class="fa-solid fa-eye"></i></a>
+                    <?php 
+                        echo '
+                        <a href="#"><i class="fa-regular fa-heart"></i></a>
+                        <a href="../gestion_produits/ajout_panier.php?id='.$IDDET.'"><i class="fa-solid fa-basket-shopping"></i></a>
+                        <a href="Presentation_produits?id='.$IDDET.'"><i class="fa-solid fa-eye"></i></a>
+                    ';
+                    ?>
                 </div>            
             </div>
         </div>
@@ -244,9 +256,13 @@
                     ?>
                 </div>
                 <div class="items">
-                    <a href="#"><i class="fa-regular fa-heart"></i></a>
-                    <a href="#"><i class="fa-solid fa-basket-shopping"></i></a>
-                    <a href="#"><i class="fa-solid fa-eye"></i></a>
+                    <?php 
+                        echo '
+                        <a href="#"><i class="fa-regular fa-heart"></i></a>
+                        <a href="../gestion_produits/ajout_panier.php?id='.$IDDET.'"><i class="fa-solid fa-basket-shopping"></i></a>
+                        <a href="Presentation_produits?id='.$IDDET.'"><i class="fa-solid fa-eye"></i></a>
+                        ';
+                    ?>
                 </div>            </div>
             <div class="carte">
                 <img src="images/Produits/LIMITEE.webp">
@@ -263,9 +279,13 @@
                     ?>
                 </div>
                 <div class="items">
-                    <a href="#"><i class="fa-regular fa-heart"></i></a>
-                    <a href="#"><i class="fa-solid fa-basket-shopping"></i></a>
-                    <a href="#"><i class="fa-solid fa-eye"></i></a>
+                    <?php 
+                        echo '
+                        <a href="#"><i class="fa-regular fa-heart"></i></a>
+                        <a href="../gestion_produits/ajout_panier.php?id='.$IDDET.'"><i class="fa-solid fa-basket-shopping"></i></a>
+                        <a href="Presentation_produits?id='.$IDDET.'"><i class="fa-solid fa-eye"></i></a>
+                        ';
+                    ?>
                 </div>            </div>
             <div class="carte">
                 <img src="images/Produits/blanc.jpg">
@@ -282,9 +302,13 @@
                     ?>
                 </div>
                 <div class="items">
-                    <a href="#"><i class="fa-regular fa-heart"></i></a>
-                    <a href="#"><i class="fa-solid fa-basket-shopping"></i></a>
-                    <a href="#"><i class="fa-solid fa-eye"></i></a>
+                    <?php 
+                        echo '
+                        <a href="#"><i class="fa-regular fa-heart"></i></a>
+                        <a href="../gestion_produits/ajout_panier.php?id='.$IDDET.'"><i class="fa-solid fa-basket-shopping"></i></a>
+                        <a href="Presentation_produits?id='.$IDDET.'"><i class="fa-solid fa-eye"></i></a>
+                        ';
+                    ?>
                 </div>            </div>
             <div class="carte">
                 <img src="images/Produits/mousepad.jpg">
@@ -301,9 +325,13 @@
                     ?>
                 </div>
                 <div class="items">
-                    <a href="#"><i class="fa-regular fa-heart"></i></a>
-                    <a href="#"><i class="fa-solid fa-basket-shopping"></i></a>
-                    <a href="#"><i class="fa-solid fa-eye"></i></a>
+                    <?php 
+                        echo '
+                        <a href="#"><i class="fa-regular fa-heart"></i></a>
+                        <a href="../gestion_produits/ajout_panier.php?id='.$IDDET.'"><i class="fa-solid fa-basket-shopping"></i></a>
+                        <a href="Presentation_produits?id='.$IDDET.'"><i class="fa-solid fa-eye"></i></a>
+                        ';
+                    ?>
                 </div>            
             </div>
         </div>
@@ -323,9 +351,13 @@
                     ?>
                 </div>
                 <div class="items">
-                    <a href="#"><i class="fa-regular fa-heart"></i></a>
-                    <a href="#"><i class="fa-solid fa-basket-shopping"></i></a>
-                    <a href="#"><i class="fa-solid fa-eye"></i></a>
+                    <?php 
+                        echo '
+                        <a href="#"><i class="fa-regular fa-heart"></i></a>
+                        <a href="../gestion_produits/ajout_panier.php?id='.$IDDET.'"><i class="fa-solid fa-basket-shopping"></i></a>
+                        <a href="Presentation_produits?id='.$IDDET.'"><i class="fa-solid fa-eye"></i></a>
+                        ';
+                    ?>
                 </div>
             </div>
             <div class="carte">
@@ -343,9 +375,13 @@
                     ?>
                 </div>
                 <div class="items">
-                    <a href="#"><i class="fa-regular fa-heart"></i></a>
-                    <a href="#"><i class="fa-solid fa-basket-shopping"></i></a>
-                    <a href="#"><i class="fa-solid fa-eye"></i></a>
+                    <?php 
+                        echo '
+                        <a href="#"><i class="fa-regular fa-heart"></i></a>
+                        <a href="../gestion_produits/ajout_panier.php?id='.$IDDET.'"><i class="fa-solid fa-basket-shopping"></i></a>
+                        <a href="Presentation_produits?id='.$IDDET.'"><i class="fa-solid fa-eye"></i></a>
+                        ';
+                    ?>
                 </div>            
             </div>
             <div class="carte">
@@ -363,9 +399,13 @@
                     ?>
                 </div>
                 <div class="items">
-                    <a href="#"><i class="fa-regular fa-heart"></i></a>
-                    <a href="#"><i class="fa-solid fa-basket-shopping"></i></a>
-                    <a href="#"><i class="fa-solid fa-eye"></i></a>
+                    <?php 
+                        echo '
+                        <a href="#"><i class="fa-regular fa-heart"></i></a>
+                        <a href="../gestion_produits/ajout_panier.php?id='.$IDDET.'"><i class="fa-solid fa-basket-shopping"></i></a>
+                        <a href="Presentation_produits?id='.$IDDET.'"><i class="fa-solid fa-eye"></i></a>
+                        ';
+                    ?>
                 </div>            
             </div>
             <div class="carte">
@@ -382,9 +422,13 @@
                     ?>
                 </div>
                 <div class="items">
-                    <a href="#"><i class="fa-regular fa-heart"></i></a>
-                    <a href="#"><i class="fa-solid fa-basket-shopping"></i></a>
-                    <a href="#"><i class="fa-solid fa-eye"></i></a>
+                    <?php 
+                        echo '
+                        <a href="#"><i class="fa-regular fa-heart"></i></a>
+                        <a href="../gestion_produits/ajout_panier.php?id='.$IDDET.'"><i class="fa-solid fa-basket-shopping"></i></a>
+                        <a href="Presentation_produits?id='.$IDDET.'"><i class="fa-solid fa-eye"></i></a>
+                        ';
+                    ?>
                 </div>            
             </div>
         </div>
@@ -404,9 +448,13 @@
                     ?>
                 </div>
                 <div class="items">
-                    <a href="#"><i class="fa-regular fa-heart"></i></a>
-                    <a href="#"><i class="fa-solid fa-basket-shopping"></i></a>
-                    <a href="#"><i class="fa-solid fa-eye"></i></a>
+                    <?php 
+                        echo '
+                        <a href="#"><i class="fa-regular fa-heart"></i></a>
+                        <a href="../gestion_produits/ajout_panier.php?id='.$IDDET.'"><i class="fa-solid fa-basket-shopping"></i></a>
+                        <a href="Presentation_produits?id='.$IDDET.'"><i class="fa-solid fa-eye"></i></a>
+                        ';
+                    ?>
                 </div>
             </div>
             <div class="carte">
@@ -424,9 +472,13 @@
                     ?>
                 </div>
                 <div class="items">
-                    <a href="#"><i class="fa-regular fa-heart"></i></a>
-                    <a href="#"><i class="fa-solid fa-basket-shopping"></i></a>
-                    <a href="#"><i class="fa-solid fa-eye"></i></a>
+                    <?php 
+                        echo '
+                        <a href="#"><i class="fa-regular fa-heart"></i></a>
+                        <a href="../gestion_produits/ajout_panier.php?id='.$IDDET.'"><i class="fa-solid fa-basket-shopping"></i></a>
+                        <a href="Presentation_produits?id='.$IDDET.'"><i class="fa-solid fa-eye"></i></a>
+                        ';
+                    ?>
                 </div>            
             </div>
             <div class="carte">
@@ -444,9 +496,13 @@
                     ?>
                 </div>
                 <div class="items">
-                    <a href="#"><i class="fa-regular fa-heart"></i></a>
-                    <a href="#"><i class="fa-solid fa-basket-shopping"></i></a>
-                    <a href="#"><i class="fa-solid fa-eye"></i></a>
+                    <?php 
+                        echo '
+                        <a href="#"><i class="fa-regular fa-heart"></i></a>
+                        <a href="../gestion_produits/ajout_panier.php?id='.$IDDET.'"><i class="fa-solid fa-basket-shopping"></i></a>
+                        <a href="Presentation_produits?id='.$IDDET.'"><i class="fa-solid fa-eye"></i></a>
+                        ';
+                    ?>
                 </div>            
             </div>
             <div class="carte">
@@ -464,9 +520,13 @@
                     ?>
                 </div>
                 <div class="items">
-                    <a href="#"><i class="fa-regular fa-heart"></i></a>
-                    <a href="#"><i class="fa-solid fa-basket-shopping"></i></a>
-                    <a href="#"><i class="fa-solid fa-eye"></i></a>
+                    <?php 
+                        echo '
+                        <a href="#"><i class="fa-regular fa-heart"></i></a>
+                        <a href="../gestion_produits/ajout_panier.php?id='.$IDDET.'"><i class="fa-solid fa-basket-shopping"></i></a>
+                        <a href="Presentation_produits?id='.$IDDET.'"><i class="fa-solid fa-eye"></i></a>
+                        ';
+                    ?>  
                 </div>            
             </div>
         </div>

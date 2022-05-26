@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: May 24, 2022 at 03:54 PM
+-- Generation Time: May 26, 2022 at 01:05 PM
 -- Server version: 8.0.27
 -- PHP Version: 8.0.13
 
@@ -26,6 +26,29 @@ USE `among_us`;
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `avis`
+--
+
+DROP TABLE IF EXISTS `avis`;
+CREATE TABLE IF NOT EXISTS `avis` (
+  `userid` int DEFAULT NULL,
+  `note` int DEFAULT NULL,
+  `texte` varchar(1000) DEFAULT NULL,
+  `IDDET` int DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `avis`
+--
+
+INSERT INTO `avis` (`userid`, `note`, `texte`, `IDDET`) VALUES
+(4, 5, 'PRODUIT DE FOU VRAIMENT UNE DINGUERIE OMG', 4),
+(4, 5, 'j\'aimerais trop avoir ce magnifique t shirt', 22),
+(4, 5, 't shirt de fou je le veux', 22);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `carts`
 --
 
@@ -43,10 +66,13 @@ CREATE TABLE IF NOT EXISTS `carts` (
 --
 
 INSERT INTO `carts` (`product_id`, `user_id`, `quant`, `total_price`) VALUES
-(12, 4, 3, 28497),
-(13, 4, 7, 66507),
-(34, 4, 4, 5996),
-(16, 4, 10, 359990);
+(12, 4, 10, 94990),
+(13, 4, 10, 95010),
+(34, 4, 10, 14990),
+(16, 4, 10, 359990),
+(15, 4, 8, 79992),
+(1, 4, 1, 4999),
+(4, 4, 1, 19999);
 
 -- --------------------------------------------------------
 
@@ -89,10 +115,10 @@ INSERT INTO `products` (`NAME`, `QUANT`, `PRICE`, `COLOR`, `TYPE`, `IDDET`) VALU
 ('CREWMATE rose peluche', 1500, 1999, 'rose', 'plush', 8),
 ('CREWMATE blanc peluche', 1500, 1993, 'blanc', 'plush', 9),
 ('CREWMATE jaune peluche', 1500, 1999, 'jaune', 'plush', 10),
-('Mug CREWMATE rouge sculpté', 200, 2499, 'rouge', 'mug', 31),
-('Mug BEZOS ETAIT L’IMPOSTEUR blanc', 200, 999, 'blanc', 'mug', 32),
-('Poster de jeu AMONG US IMPOSTOR', 200, 999, 'noir', 'poster', 33),
-('Tapis de souris AMONG US', 200, 1499, 'noir', 'tapis de souris', 34);
+('Mug CREWMATE rouge sculpté', 200, 2499, 'rouge', 'other', 31),
+('Mug BEZOS ETAIT L’IMPOSTEUR blanc', 200, 999, 'blanc', 'other', 32),
+('Poster de jeu AMONG US IMPOSTOR', 200, 999, 'noir', 'other', 33),
+('Tapis de souris AMONG US', 200, 1499, 'noir', 'other', 34);
 
 -- --------------------------------------------------------
 

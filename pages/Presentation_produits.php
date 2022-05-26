@@ -72,35 +72,35 @@
 
         <!-- Menu-->
         <nav class="menu">
-            <ul class="onglet"><a href="projet1.html">Accueil</a></ul>
-            <ul class="onglet"><a href="#">Peluches</a>
+            <ul class="onglet"><a href="./Accueil.php">Accueil</a></ul>
+            <ul class="onglet"><a href="./boutique.php?type=plush">Peluches</a>
+                <!-- <li class="link">BLABLA</li>
                 <li class="link">BLABLA</li>
                 <li class="link">BLABLA</li>
-                <li class="link">BLBLAB</li>
                 <li class="link">BLABLA</li>
-                <li class="link">BLABLA</li>
+                <li class="link">BLABLA</li> -->
             </ul>
-            <ul class="onglet"><a href="#">Cosplay</a>
-                <li class="link">Enfants</li>
-                <li class="link">Adultes</li>
+            <ul class="onglet"><a href="./boutique.php?type=cosplay">Cosplay</a>
+                <!-- <li class="link">Enfants</li>
+                <li class="link">Adultes</li> -->
 
             </ul>
-            <ul class="onglet"><a href="#">Vetements</a>
-                <li class="link">Sweets</li>
-                <li class="link">Tee-shirts</li>
-                <li class="link">Casquettes</li>
+            <ul class="onglet"><a href="./boutique.php?type=clothing">Vetements</a>
+                <li class="link"><a href="./Presentation_produits.php?id=21">Sweats</a></li>
+                <li class="link"><a href="./Presentation_produits.php?id=22">Tee-Shirt</a></li>
+                <li class="link"><a href="./Presentation_produits.php?id=23">Casquette</a></li>
             </ul>
-            <ul class="onglet" ><a href="#">Autres</a>
-                <li class="link">Mugs</li>
-                <li class="link">Stickers</li>
-                <li class="link">Tapis de<br> Souris</li>
+            <ul class="onglet" ><a href="./boutique.php?type=other">Autres</a>
+                <li class="link"><a href="./Presentation_produits.php?id=31">Mugs</a></li>
+                <li class="link"><a href="./Presentation_produits.php?id=23">Poster</a></li>
+                <li class="link"><a href="./Presentation_produits.php?id=34">Tapis de<br> Souris</a></li>
             </ul>
-            <ul class="onglet"><a href="#">Cadeaux</a>
-                <li class="link">BLABLA</li>
+            <ul class="onglet"><a href="./boutique.php?type=gift">Cadeaux</a>
+                <!-- <li class="link">BLABLA</li>
                 <li class="link">BLABLA</li>
                 <li class="link">BLBLAB</li>
                 <li class="link">BLABLA</li>
-                <li class="link">BLABLA</li>
+                <li class="link">BLABLA</li> -->
             </ul>
         </nav>
         <!-- FIN Menu-->
@@ -119,7 +119,7 @@
             <div class="details">
                 <h6><a href="Accueil.html">Accueil</a> / <a href="#" class="">
                     <?php
-                        if ($current_product["TYPE"] == "cosplay" || $current_product["TYPE"] == "plush" || $current_product["TYPE"] == "clothing"){
+                        if ($current_product["TYPE"] == "cosplay" || $current_product["TYPE"] == "plush" || $current_product["TYPE"] == "clothing" || $current_product["TYPE"] == "other"){
                             echo $current_product["TYPE"];
                         }
                         else echo "autres";
@@ -206,7 +206,50 @@
     </div>
     <!-- FIN Presentation des produits-->
 
-    <!--Autre articles-->
+    <!-- avis clients -->
+    <div class="avis-clients">
+        <?php
+            if (isset($_SESSION["login"])){
+                echo '
+                <div class="new-avis">
+                    <form method="post">
+                        <label for="note">Notez ce produit :</label>
+                        <input type="number" name="note" id="note" value=5 min=0 max=5> /5<br>
+                        <label for="avis">Laissez un avis :</label><br>
+                        <textarea name="avis" id="avis" cols="100" rows="10" placeholder="Très bon produit..." maxlength="1000"></textarea>
+                        <input type="submit" value="Envoyer" name="submit-avis" id="submit-avis">
+                    </form>
+                </div>
+                ';
+                if (isset($_POST["submit-avis"])){
+                    $result = mysqli_query($link, "INSERT INTO avis VALUES (".$_SESSION["id"].", ".$_POST["note"].', "'.$_POST["avis"].'", '.$IDDET.")");
+                    if ($result) echo "Merci de nous transmettre votre avis !";
+                }
+            }
+            else echo "Connectez vous pour écrire un avis.";
+
+            function print_avis($NAME, $NOTE, $AVIS){
+                echo '
+                <div class="avis-autres-clients">
+                    <p id="nom-client"><strong>'.$NAME.'</strong> donne <strong>'.$NOTE.'/5</strong> : </p>
+                    <p id="avis-texte-client">'.$AVIS.'</p>
+                    </div>
+                    <br><hr>
+                ';
+            }
+            $all_avis = mysqli_query($link, "SELECT users.identifiant, avis.note, avis.texte FROM avis JOIN users ON avis.userid = users.id WHERE IDDET = ".$IDDET);
+            $i = 0;
+            while ($row = mysqli_fetch_assoc($all_avis)){
+                if ($i>=5) break;
+                print_avis($row["identifiant"], $row["note"], $row["texte"]);
+            } 
+        ?>
+
+        
+    </div>
+    <!-- FIN avis clients -->
+
+    <!--Autres articles-->
     <div class="autres_articles">
         <div class="container">
             <i class="fa-regular fa-heart"></i>
@@ -214,66 +257,109 @@
         </div>
     </div>
 
-    <div class="container_carte_produit">
+    <div class="container_carte_produit" visibility=hidden>
 
         <div class="carte_produit2">
             <div class="container">
-                <div class="carte">
-                    <img src="images/Produits/familial.jpg">
-                    <div class="details">
-                        <p class="marque">Marque</p>
-                        <h5>Titre de l'article</h5> 
-                        <p class="prix">58€</p>
-                    </div>
-                    <div class="items">
-                        <a href="#"><i class="fa-regular fa-heart"></i></a>
-                        <a href="#"><i class="fa-solid fa-basket-shopping"></i></a>
-                        <a href="#"><i class="fa-solid fa-eye"></i></a>
-                    </div>
+            <div class="carte">
+                <img src="images/Produits/familial.jpg">
+                <div class="details">
+                    <?php
+                        $IDDET = 16;
+                        $current_product = mysqli_fetch_assoc(mysqli_query($link, "SELECT * FROM products WHERE IDDET = ".$IDDET));
+                        echo '
+                        <p class="marque">'.$current_product["TYPE"].'</p>
+                        <h5>'.$current_product["NAME"].'</h5> 
+                        <p class="prix">'.(intval($current_product["PRICE"])/100).' €</p>
+                        
+                        ';
+                    ?>
                 </div>
+                <div class="items">
+                    <?php 
+                        echo '
+                        <a href="#"><i class="fa-regular fa-heart"></i></a>
+                        <a href="../gestion_produits/ajout_panier.php?id='.$IDDET.'"><i class="fa-solid fa-basket-shopping"></i></a>
+                        <a href="Presentation_produits?id='.$IDDET.'"><i class="fa-solid fa-eye"></i></a>
+                        ';
+                    ?>
+                </div>
+            </div>
                 <div class="carte">
                     <img src="images/Produits/gonflable_cyan.jpg">
                     <div class="details">
-                        <p class="marque">Marque</p>
-                        <h5>Titre de l'article</h5> 
-                        <p class="prix">58€</p>
-                    </div>
-                    <div class="items">
+                    <?php
+                        $IDDET = 15;
+                        $current_product = mysqli_fetch_assoc(mysqli_query($link, "SELECT * FROM products WHERE IDDET = ".$IDDET));
+                        echo '
+                        <p class="marque">'.$current_product["TYPE"].'</p>
+                        <h5>'.$current_product["NAME"].'</h5> 
+                        <p class="prix">'.(intval($current_product["PRICE"])/100).' €</p>
+                        
+                        ';
+                    ?>
+                </div>
+                <div class="items">
+                    <?php 
+                        echo '
                         <a href="#"><i class="fa-regular fa-heart"></i></a>
-                        <a href="#"><i class="fa-solid fa-basket-shopping"></i></a>
-                        <a href="#"><i class="fa-solid fa-eye"></i></a>
-                    </div>            
+                        <a href="../gestion_produits/ajout_panier.php?id='.$IDDET.'"><i class="fa-solid fa-basket-shopping"></i></a>
+                        <a href="Presentation_produits?id='.$IDDET.'"><i class="fa-solid fa-eye"></i></a>
+                        ';
+                    ?>
+                </div>          
                 </div>
                 <div class="carte">
                     <img src="images/Produits/CHAPEAU.jpg">
                     <div class="details">
-                        <p class="marque">Marque</p>
-                        <h5>Titre de l'article</h5> 
-                        <p class="prix">58€</p>
-                    </div>
-                    <div class="items">
+                    <?php
+                        $IDDET = 1;
+                        $current_product = mysqli_fetch_assoc(mysqli_query($link, "SELECT * FROM products WHERE IDDET = ".$IDDET));
+                        echo '
+                        <p class="marque">'.$current_product["TYPE"].'</p>
+                        <h5>'.$current_product["NAME"].'</h5> 
+                        <p class="prix">'.(intval($current_product["PRICE"])/100).' €</p>
+                        
+                        ';
+                    ?>
+                </div>
+                <div class="items">
+                    <?php 
+                        echo '
                         <a href="#"><i class="fa-regular fa-heart"></i></a>
-                        <a href="#"><i class="fa-solid fa-basket-shopping"></i></a>
-                        <a href="#"><i class="fa-solid fa-eye"></i></a>
-                    </div>            
+                        <a href="../gestion_produits/ajout_panier.php?id='.$IDDET.'"><i class="fa-solid fa-basket-shopping"></i></a>
+                        <a href="Presentation_produits?id='.$IDDET.'"><i class="fa-solid fa-eye"></i></a>
+                        ';
+                    ?>
+                </div>          
                 </div>
                 <div class="carte">
                     <img src="images/Produits/jogging.jpg">
                     <div class="details">
-                        <p class="marque">Marque</p>
-                        <h5>Titre de l'article</h5> 
-                        <p class="prix">58€</p>
-                    </div>
-                    <div class="items">
+                    <?php
+                        $IDDET = 21;
+                        $current_product = mysqli_fetch_assoc(mysqli_query($link, "SELECT * FROM products WHERE IDDET = ".$IDDET));
+                        echo '
+                        <p class="marque">'.$current_product["TYPE"].'</p>
+                        <h5>'.$current_product["NAME"].'</h5> 
+                        <p class="prix">'.(intval($current_product["PRICE"])/100).' €</p>
+                        
+                        ';
+                    ?>
+                </div>
+                <div class="items">
+                    <?php 
+                        echo '
                         <a href="#"><i class="fa-regular fa-heart"></i></a>
-                        <a href="#"><i class="fa-solid fa-basket-shopping"></i></a>
-                        <a href="#"><i class="fa-solid fa-eye"></i></a>
-                    </div>            
+                        <a href="../gestion_produits/ajout_panier.php?id='.$IDDET.'"><i class="fa-solid fa-basket-shopping"></i></a>
+                        <a href="Presentation_produits?id='.$IDDET.'"><i class="fa-solid fa-eye"></i></a>
+                        ';
+                    ?>
+                </div>           
                 </div>
             </div>
         </div>
     </div>    
-
 
     <!--FIN Autre articles-->
 

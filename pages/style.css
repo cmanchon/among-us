@@ -1335,6 +1335,63 @@ body .produits_similaire .produit {
 
 /*FIN Partie presentation */
 
+/* avis utilisateur */
+.avis-clients{
+    margin: 50px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#note{
+    width :30px;
+    height: 17px;
+    font-size: 16px;
+}
+
+#avis{
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 10px;
+}
+
+#submit-avis{
+    font-weight: bold;
+    padding: 15px;
+    background-color: black;
+    color: white;
+    border-radius: 10px;
+    box-shadow: 2px 2px 2px black;
+}
+
+#submit-avis:hover{
+    transition: 0.3s;
+    background-color:red;
+    border-color: red;
+    box-shadow: 0px 0px 0px black;
+}
+
+.avis-autres-clients{
+    padding-top: 30px;
+    display: flex;
+    flex-direction: row;
+}
+
+.avis-autres-clients #nom-client{
+    flex:1;
+}
+
+.avis-autres-clients #avis-texte-client{
+    flex:3;
+}
+
+.avis-autres-clients hr{
+    color:black;
+    width: 70%;
+    border-width: 0;    
+}
+
+
+/* FIN avis utilisateur */
+
+
 /* Autre Articles*/
 
 body .autres_articles {
@@ -1486,6 +1543,10 @@ body .description_section .details p {
 
 /* Paiement */
 
+.Confirmation{
+    opacity: 0.5;
+}
+
 body .paiement {
     margin : 30px 50px;
 }
@@ -1536,7 +1597,7 @@ body .paiement .container_items .items a {
 }
 
 body .paiement .container_items  .Paiement {
-    opacity: 0.5;
+    opacity: 1;
 }
 
 
@@ -1741,11 +1802,11 @@ body .panier {
     padding-bottom: 300px ;
 }
 body .panier .paiement .container_items  .Commande {
-    opacity: 0.5;
+    opacity: 1;
 }
 
 body .panier .paiement .container_items  .Paiement {
-    opacity: 1;
+    opacity: 0.5;
 }
 
 body .panier {

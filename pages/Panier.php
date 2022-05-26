@@ -35,7 +35,7 @@
             <div class="container_items">
                 <div class="items">
                     <a href="#" class="Commande">1</a>
-                    <a href="Paiement.html" class="Paiement">2</a>
+                    <a href="Paiement.php" class="Paiement">2</a>
                     <a href="#" class="Confirmation">3</a>
                 </div>
           
@@ -129,57 +129,101 @@
 
         <div class="carte_produit2">
             <div class="container">
-                <div class="carte">
-                    <img src="images/Produits/familial.jpg">
-                    <div class="details">
-                        <p class="marque">Marque</p>
-                        <h5>Titre de l'article</h5> 
-                        <p class="prix">58€</p>
-                    </div>
-                    <div class="items">
-                        <a href="#"><i class="fa-regular fa-heart"></i></a>
-                        <a href="#"><i class="fa-solid fa-basket-shopping"></i></a>
-                        <a href="#"><i class="fa-solid fa-eye"></i></a>
-                    </div>
+            <div class="carte">
+                <img src="images/Produits/familial.jpg">
+                <div class="details">
+                    <?php
+                        $IDDET = 16;
+                        $current_product = mysqli_fetch_assoc(mysqli_query($link, "SELECT * FROM products WHERE IDDET = ".$IDDET));
+                        echo '
+                        <p class="marque">'.$current_product["TYPE"].'</p>
+                        <h5>'.$current_product["NAME"].'</h5> 
+                        <p class="prix">'.(intval($current_product["PRICE"])/100).' €</p>
+                        
+                        ';
+                    ?>
                 </div>
+                <div class="items">
+                    <?php 
+                        echo '
+                        <a href="#"><i class="fa-regular fa-heart"></i></a>
+                        <a href="../gestion_produits/ajout_panier.php?id='.$IDDET.'"><i class="fa-solid fa-basket-shopping"></i></a>
+                        <a href="Presentation_produits?id='.$IDDET.'"><i class="fa-solid fa-eye"></i></a>
+                        ';
+                    ?>
+                </div>
+            </div>
                 <div class="carte">
                     <img src="images/Produits/gonflable_cyan.jpg">
                     <div class="details">
-                        <p class="marque">Marque</p>
-                        <h5>Titre de l'article</h5> 
-                        <p class="prix">58€</p>
-                    </div>
-                    <div class="items">
+                    <?php
+                        $IDDET = 15;
+                        $current_product = mysqli_fetch_assoc(mysqli_query($link, "SELECT * FROM products WHERE IDDET = ".$IDDET));
+                        echo '
+                        <p class="marque">'.$current_product["TYPE"].'</p>
+                        <h5>'.$current_product["NAME"].'</h5> 
+                        <p class="prix">'.(intval($current_product["PRICE"])/100).' €</p>
+                        
+                        ';
+                    ?>
+                </div>
+                <div class="items">
+                    <?php 
+                        echo '
                         <a href="#"><i class="fa-regular fa-heart"></i></a>
-                        <a href="#"><i class="fa-solid fa-basket-shopping"></i></a>
-                        <a href="#"><i class="fa-solid fa-eye"></i></a>
-                    </div>            
+                        <a href="../gestion_produits/ajout_panier.php?id='.$IDDET.'"><i class="fa-solid fa-basket-shopping"></i></a>
+                        <a href="Presentation_produits?id='.$IDDET.'"><i class="fa-solid fa-eye"></i></a>
+                        ';
+                    ?>
+                </div>          
                 </div>
                 <div class="carte">
                     <img src="images/Produits/CHAPEAU.jpg">
                     <div class="details">
-                        <p class="marque">Marque</p>
-                        <h5>Titre de l'article</h5> 
-                        <p class="prix">58€</p>
-                    </div>
-                    <div class="items">
+                    <?php
+                        $IDDET = 1;
+                        $current_product = mysqli_fetch_assoc(mysqli_query($link, "SELECT * FROM products WHERE IDDET = ".$IDDET));
+                        echo '
+                        <p class="marque">'.$current_product["TYPE"].'</p>
+                        <h5>'.$current_product["NAME"].'</h5> 
+                        <p class="prix">'.(intval($current_product["PRICE"])/100).' €</p>
+                        
+                        ';
+                    ?>
+                </div>
+                <div class="items">
+                    <?php 
+                        echo '
                         <a href="#"><i class="fa-regular fa-heart"></i></a>
-                        <a href="#"><i class="fa-solid fa-basket-shopping"></i></a>
-                        <a href="#"><i class="fa-solid fa-eye"></i></a>
-                    </div>            
+                        <a href="../gestion_produits/ajout_panier.php?id='.$IDDET.'"><i class="fa-solid fa-basket-shopping"></i></a>
+                        <a href="Presentation_produits?id='.$IDDET.'"><i class="fa-solid fa-eye"></i></a>
+                        ';
+                    ?>
+                </div>          
                 </div>
                 <div class="carte">
                     <img src="images/Produits/jogging.jpg">
                     <div class="details">
-                        <p class="marque">Marque</p>
-                        <h5>Titre de l'article</h5> 
-                        <p class="prix">58€</p>
-                    </div>
-                    <div class="items">
+                    <?php
+                        $IDDET = 21;
+                        $current_product = mysqli_fetch_assoc(mysqli_query($link, "SELECT * FROM products WHERE IDDET = ".$IDDET));
+                        echo '
+                        <p class="marque">'.$current_product["TYPE"].'</p>
+                        <h5>'.$current_product["NAME"].'</h5> 
+                        <p class="prix">'.(intval($current_product["PRICE"])/100).' €</p>
+                        
+                        ';
+                    ?>
+                </div>
+                <div class="items">
+                    <?php 
+                        echo '
                         <a href="#"><i class="fa-regular fa-heart"></i></a>
-                        <a href="#"><i class="fa-solid fa-basket-shopping"></i></a>
-                        <a href="#"><i class="fa-solid fa-eye"></i></a>
-                    </div>            
+                        <a href="../gestion_produits/ajout_panier.php?id='.$IDDET.'"><i class="fa-solid fa-basket-shopping"></i></a>
+                        <a href="Presentation_produits?id='.$IDDET.'"><i class="fa-solid fa-eye"></i></a>
+                        ';
+                    ?>
+                </div>           
                 </div>
             </div>
         </div>
