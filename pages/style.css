@@ -1954,6 +1954,182 @@ body .panier .container-panier .recap input {
 
 /* FIN Panier */
 
+/* Connexion */
+
+/* Identification */
+
+.connexion {
+    background :rgba(0, 0, 0, 0.8);
+    top : 0;
+    left : 0;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    font-family: Helvetica;
+    z-index: 1;
+    display: none;
+    color : white;
+}
+
+.connexion .btn_close {
+    position: absolute;
+    top : 100px;
+    right: 220px;
+    font-size: 32px;
+    cursor : pointer;
+    opacity: 0.7;
+}
+
+.connexion .btn_close:hover {
+    opacity: 1;
+}
+
+
+.connexion .container {
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+
+.connexion .identification {
+    position: absolute;
+    top : 50%;
+    left : 35%;
+    transform: translate(-50%,-50%);
+    color : white;
+    width: 20%;
+}
+
+.connexion .identification h1 {
+   margin-bottom: 30px;
+   font-size: 30px;
+   border-bottom: 5px solid royalblue;
+   text-align: start;
+}
+
+.connexion .identification .input .ligne {
+    font-size : 20px;
+    padding: 8px 0;
+    border-bottom: 1px solid;
+}
+
+.connexion .identification .input .ligne i {
+    font-size: 25px;
+}
+
+.connexion .identification .input .ligne input {
+    outline: none;
+    background: transparent;
+    border: none;
+    font-size: 18px;
+    margin-top: 15px;
+    margin-left: 5px;
+    color : white;
+}
+
+.connexion .identification input[type="submit"] {
+    margin-top: 28px;
+    text-align: center;
+    align-items: center;
+    padding: 10px 78px;
+    border-radius: 5px;
+    font-size: 20px;
+    cursor: pointer;
+    background: transparent;
+    border: 1px solid royalblue;
+    color : white;
+    opacity: 0.7;  
+    margin-bottom: 20px;
+}
+
+.connexion .identification input[type="submit"]:hover {
+    opacity: 1;  
+    border: 3px solid royalblue;
+}
+
+.connexion .identification a {
+    text-decoration: underline;
+    opacity: 0.7;
+    text-align:center;
+    align-items: center;
+    font-size : 13px;
+    color : white;
+    padding:5% 26%;
+}
+
+.connexion .identification a:hover {
+    opacity: 1;
+    text-shadow: rgba(255, 255, 255, 0.589) 1px 0 10px;
+}
+
+
+
+/* Fin Identification*/
+
+/* Inscription*/
+
+.connexion .inscription {
+    position: absolute;
+    top : 50%;
+    left : 65%;
+    transform: translate(-50%,-50%);
+    color : white;
+    width: 20%;
+    padding: 80px 100px;
+}
+
+.connexion .inscription h1 {
+   margin-bottom: 30px;
+   font-size: 25px;
+   border-bottom: 5px solid royalblue;
+   text-align: start;
+}
+
+.connexion .inscription .input {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.connexion .inscription .input input {
+    outline: none;
+    background: transparent;
+    border: none;
+    font-size: 18px;
+    margin-top: 15px;
+    margin-left: 5px;
+    color : white;
+    border-bottom: 1px solid ;
+    padding-right: 50px;
+    opacity: 0.8;
+}
+
+.connexion .inscription .input input:hover {
+    opacity: 1;
+}
+
+.connexion .inscription input[type="submit"] {
+    margin-top: 40px;
+    text-align: center;
+    align-items: center;
+    padding: 8px 98px;
+    border-radius: 5px;
+    font-size: 20px;
+    cursor: pointer;
+    background: transparent;
+    border: 1px solid royalblue;
+    color : white;
+    opacity: 0.7;  
+}
+
+.connexion .inscription input[type="submit"]:hover {
+    opacity: 1;  
+    border: 3px solid royalblue;
+}
+
+/* FIN Inscription */
+
+/* Fin Connexion */
+
 
 
 
