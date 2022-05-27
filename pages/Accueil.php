@@ -58,7 +58,7 @@
                         <a href="#"><i class="fa-solid fa-moon"></i></a>
                         <a href="./boutique.php?type=favorites"><i class="fa-regular fa-heart"></i></a>
                         <a href="./Panier.php"><i class="fa-solid fa-basket-shopping"></i></a>
-                        <a href="../connexion/session.php"><i class="fa-solid fa-user"></i></i></a>
+                        <a href="../connexion/session.php"><i class="fa-solid fa-user" class="ouvrir" onclick="ouvre()"></i></a>
                     </div>
                     ';
                 }
@@ -68,7 +68,7 @@
                         <a href="#"><i class="fa-solid fa-moon"></i></a>
                         <a href="../connexion/login.php"><i class="fa-regular fa-heart"></i></a>
                         <a href="../connexion/login.php"><i class="fa-solid fa-basket-shopping"></i></a>
-                        <a href="../connexion/login.php"><i class="fa-solid fa-user"></i></i></a>
+                        <a href="../connexion/login.php"><i class="fa-solid fa-user" class="ouvrir" onclick="ouvre()"></i></a>
                     </div>
                     ';
 
@@ -78,6 +78,42 @@
         </div>
         
         <!--FIN header-principal-->
+        
+        <!--Connexion-->
+        <section class="connexion" id="connexion">
+            <bouton class="btn_close" onclick="ferme()">x</bouton>
+            <div class="container">
+                <form action="" class="inscription">
+                    <h1>Je suis nouveau ici</h1>
+                    <div class="input">
+                        <input type="text" name="identifiant" id="identifiant" placeholder="Pseudo" required>
+                        <input type="text" name="nom" id="nom" placeholder="Nom" required>
+                        <input type="text" name="prenom" id="prenom" placeholder="Prenom" required>
+                        <input type="email" name="email" id="email" placeholder="E-mail" required>
+                        <input type="password" name="password" id="password" placeholder="Mot de passe" required>
+                    </div>
+                    <input type="submit" value="S'inscrire">
+                </form>
+    
+                <form action="" class="identification">
+                    <h1>Connexion</h1>
+                    <div class="input">
+                        <div class="ligne">
+                            <i class="fa-solid fa-envelope"></i>
+                            <input type="email" name="identifiant" id="identifiant" placeholder="* ADRESSE E-MAIL" required>
+                        </div>
+                        <div class="ligne">
+                            <i class="fa-solid fa-lock"></i>
+                            <input type="password" name="password" id="password" placeholder="* MOT DE PASSE" required>
+                        </div>
+                    </div>
+                    <input type="submit" value="Se connecter" name="submit">
+                    <a href="#">Mot de passe oublié ?</a>
+                </form>
+            </div>
+    
+        </section>
+        <!--FIN Connexion-->
 
         <!-- Menu-->
         <nav class="menu">
