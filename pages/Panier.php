@@ -11,7 +11,9 @@
     <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
     <title>Panier</title>
     <link rel="shortcut icon" type="image/x-icon" href="favicon_io/apple-touch-icon.png"/>
-    <?php require("../connexion/open_session.php");?>
+    <?php require("../connexion/open_session.php");
+    $total_price = 0;
+    ?>
     
 </head>
 <body>
@@ -71,14 +73,14 @@
                                     <img src="images/Font/panier-vide.jpg.jpeg" alt="">
                                 </div>
                                 <h2>VOTRE PANIER EST VIDE!</h2>
-                                <a href="Accueil.html">ACHETER MAINTENANT</a>
+                                <a href="Accueil.php">ACHETER MAINTENANT</a>
                             </div>  
                             ';
                         }
                         else{
                             //panier non vide
                             echo '<div class="panier_non_vide">';
-                            $cart_table = mysqli_query($link, "SELECT products.NAME, products.PRICE, carts.quant, carts.total_price, carts.product_id FROM carts JOIN products ON carts.product_id=products.IDDET");
+                            $cart_table = mysqli_query($link, "SELECT products.NAME, products.PRICE, carts.quant, carts.total_price, carts.product_id FROM carts JOIN products ON carts.product_id=products.IDDET WHERE carts.user_id = ".$_SESSION["id"]);
                             // echo "<br><br>";
                             echo '<table id="cart_table">';
                             echo '<div class="details">
@@ -87,7 +89,6 @@
                             <th><p>Quantité</p></th>
                             <th><p>Total</p></th></tr>
                             </div>';
-                            $total_price = 0;
                             while ($row = mysqli_fetch_assoc($cart_table)){
                                 echo "<tr><td>";
                                 echo '<a href="Presentation_produits?id='.$row["product_id"].'" id ="product_name">'.$row["NAME"]."</a>";

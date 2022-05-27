@@ -58,17 +58,74 @@
                     <i class="fa fa-search"></i>
                 </button>
             </form>
-    
 
-            <div class="item">
-                <a href="#"><i class="fa-solid fa-moon"></i></a>
-                <a href="./boutique.php?type=favorites"><i class="fa-regular fa-heart"></i></a>
-                <a href="./Panier.php"><i class="fa-solid fa-basket-shopping"></i></a>
-                <a href="#"><i class="fa-solid fa-user"></i></i></a>
-            </div>
+            <?php
+                if (isset($_SESSION["login"])){
+                    //connecté.e
+                    echo '
+                    <div class="item">
+                        <a href="./boutique.php?type=favorites"><i class="fa-regular fa-heart"></i></a>
+                        <a href="./Panier.php"><i class="fa-solid fa-basket-shopping"></i></a>
+                        <a href="./session.php"><i class="fa-solid fa-user"></i></a>
+                    </div>
+                    ';
+                }
+                else{
+                    //non connecté.e
+                    echo '
+                    <div class="item">
+                        <a href="#"><i class="fa-regular fa-heart" class="ouvrir" onclick="ouvre()"></i></a>
+                        <a href="#"><i class="fa-solid fa-basket-shopping" class="ouvrir" onclick="ouvre()"></i></a>
+                        <a href="#"><i class="fa-solid fa-user" class="ouvrir" onclick="ouvre()"></i></a>
+                    </div>
+                    ';
+
+                }
+                
+            ?>
         </div>
         
         <!--FIN header-principal-->
+        
+        <!--Connexion-->
+        <section class="connexion" id="connexion">
+            <bouton class="btn_close" onclick="ferme()">x</bouton>
+            <div class="container">
+                <form method="POST" action="../connexion/signup.php" class="inscription">
+                    <h1>Je suis nouveau ici</h1>
+                    <div class="input">
+                        <input type="text" name="identifiant" id="identifiant" placeholder="Pseudo" required>
+                        <input type="text" name="nom" id="nom" placeholder="Nom" required>
+                        <input type="text" name="prenom" id="prenom" placeholder="Prenom" required>
+                        <input type="email" name="email" id="email" placeholder="E-mail" required>
+                        <input type="password" name="password" id="password" placeholder="Mot de passe" required>
+                    </div>
+                    <input type="submit" value="S'inscrire" name="signup">
+                </form>
+    
+                <form method="POST" action="../connexion/login.php" class="identification">
+                    <h1>Connexion</h1>
+                    <div class="input">
+                        <div class="ligne">
+                            <i class="fa-solid fa-envelope"></i>
+                            <input type="email" name="email" id="identifiant" placeholder="* ADRESSE E-MAIL" required>
+                        </div>
+                        <div class="ligne">
+                            <i class="fa-solid fa-lock"></i>
+                            <input type="password" name="password" id="password" placeholder="* MOT DE PASSE" required>
+                        </div>
+                    </div>
+                    <input type="submit" value="Se connecter" name="login">
+                    <a href="#">Mot de passe oublié ?</a>
+                </form>
+            </div>
+    
+        </section>
+
+        <?php
+
+        ?>
+        <!--FIN Connexion-->
 
         <!-- Menu-->
         <nav class="menu">
@@ -128,11 +185,14 @@
                 <h3><?php echo $current_product["NAME"];?></h3>
                 <h2><?php echo (intval($current_product["PRICE"])/100)."€";?></h2>
                 <br><?php 
-                        $customer_info = mysqli_fetch_assoc(mysqli_query($link, "SELECT * FROM carts WHERE product_id=".$IDDET));
-                        if (isset($customer_info) && isset($_SESSION['login']) && isset($_SESSION['password'])){
-                            echo "Actuellement <b>";
-                            echo $customer_info["quant"]."</b> dans le panier";
-                            
+                        if (isset($_SESSION["login"])){
+                            if (mysqli_query($link, "SELECT * FROM carts WHERE product_id=".$IDDET."and user_id = ".$_SESSION["id"])!=NULL){
+                                $customer_info = mysqli_fetch_assoc(mysqli_query($link, "SELECT * FROM carts WHERE product_id=".$IDDET."and user_id = ".$_SESSION["id"]));
+                                echo "Actuellement <b>";
+                                echo $customer_info["quant"]."</b> dans le panier";
+                                
+                            }
+
                         }
                     ?>           
                 <div class="description">

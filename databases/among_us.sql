@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: May 27, 2022 at 09:43 AM
+-- Generation Time: May 27, 2022 at 06:45 PM
 -- Server version: 8.0.27
 -- PHP Version: 8.0.13
 
@@ -43,6 +43,8 @@ CREATE TABLE IF NOT EXISTS `avis` (
 
 INSERT INTO `avis` (`userid`, `note`, `texte`, `IDDET`) VALUES
 (4, 5, 'PRODUIT DE FOU VRAIMENT UNE DINGUERIE OMG', 4),
+(4, 4, 'je suis choquer aussi de la qualité de ce produit', 15),
+(5, 5, 'produit de fou omg je suis choquer', 15),
 (4, 5, 'j\'aimerais trop avoir ce magnifique t shirt', 22),
 (4, 5, 't shirt de fou je le veux', 22);
 
@@ -70,9 +72,12 @@ INSERT INTO `carts` (`product_id`, `user_id`, `quant`, `total_price`) VALUES
 (13, 4, 10, 95010),
 (34, 4, 10, 14990),
 (16, 4, 10, 359990),
-(15, 4, 8, 79992),
+(15, 4, 26, 259974),
 (1, 4, 1, 4999),
-(4, 4, 1, 19999);
+(4, 4, 1, 19999),
+(34, 5, 15, 22485),
+(21, 5, 1, 3999),
+(1, 5, 2, 9998);
 
 -- --------------------------------------------------------
 
@@ -91,8 +96,36 @@ CREATE TABLE IF NOT EXISTS `favorites` (
 --
 
 INSERT INTO `favorites` (`product_id`, `user_id`) VALUES
+(15, 5),
 (23, 4),
 (22, 4);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `paiement`
+--
+
+DROP TABLE IF EXISTS `paiement`;
+CREATE TABLE IF NOT EXISTS `paiement` (
+  `userid` int DEFAULT NULL,
+  `name` varchar(50) DEFAULT NULL,
+  `email` varchar(50) DEFAULT NULL,
+  `adresse` varchar(150) DEFAULT NULL,
+  `pays` varchar(50) DEFAULT NULL,
+  `ville` varchar(100) DEFAULT NULL,
+  `num_carte` int DEFAULT NULL,
+  `expiration` varchar(50) DEFAULT NULL,
+  `cvc` int DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `paiement`
+--
+
+INSERT INTO `paiement` (`userid`, `name`, `email`, `adresse`, `pays`, `ville`, `num_carte`, `expiration`, `cvc`) VALUES
+(4, '', 'manchon.clara@gmail.com', '26 AVENUE ALFRED SAUVY', 'France', 'PERPIGNAN', 0, '09/23', 569),
+(5, 'Manchon Clara', 'manchon.clara@gmail.com', '26 AVENUE ALFRED SAUVY', 'France', 'PERPIGNAN', 0, '09/23', 569);
 
 -- --------------------------------------------------------
 
@@ -163,7 +196,8 @@ CREATE TABLE IF NOT EXISTS `users` (
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `identifiant`) VALUES
 (4, 'Manchon Clara', 'manchon.clara@gmail.com', 'motdepasse', 'cmanchon'),
 (2, 'Bellaïd William', 'poundwinner@gmail.com', 'warioisthebest', 'Glutonny'),
-(1, '  admin', 'admin@gmail.com', 'admin', 'admin');
+(1, '  admin', 'admin@gmail.com', 'admin', 'admin'),
+(5, 'Philippe Jean', 'jean.philippe@gmail.com', 'mdp92', 'JPdu92');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -2131,9 +2131,54 @@ body .panier .container-panier .recap input {
 /* Fin Connexion */
 
 
+/* session */
+#logout{
+    background-color: #636363;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    text-decoration: none;
+}
 
+#logout:hover{
+    opacity: 0.7;
+    transition: 0.3s;
+}
 
+#delete-account{
+    background-color: rgb(237, 50, 50);
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    text-decoration: none;
+}
 
+#delete-account:hover{
+    opacity: 0.7;
+    transition: 0.3s;
+}
+
+.description_section #delete_btn{
+    background-color: red;
+    color:white;
+    padding:5px;
+    border-radius: 5px;
+}
+.description_section #delete_btn:hover{
+    opacity: 0.7;
+    transition: 0.3s;
+}
+
+.description_section td{
+    padding:20px;
+    border: 1px solid black;   
+}
+
+.description_section table{
+    border-collapse: collapse;
+}
+
+/* FIN session */
 
 
 

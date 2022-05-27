@@ -10,25 +10,21 @@
     <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css"/>
     <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
     <?php
+
+        require("../connexion/open_session.php");
+        if (!isset($_SESSION["login"])){
+            //non connecté.e -> redirige vers l'accueil
+            echo '<script lang="JavaScript">
+                window.location.replace("./Accueil.php");
+            </script>';
+        }
         $link = mysqli_connect("localhost", "root", "");
         mysqli_select_db($link, "among_us");
-        if (isset($_GET["type"])){
-            $TYPE = $_GET["type"];
-        }
-        else $TYPE = "cosplay"; //modifiable
-        if (isset($_GET["order"])){
-            if ($_GET["order"] == "AZ") $ORDER = "NAME ASC";
-            else if ($_GET["order"] == "ZA") $ORDER = "NAME DESC";
-            else if ($_GET["order"] == "price_asc") $ORDER = "PRICE ASC";
-            else if ($_GET["order"] == "price_desc") $ORDER = "PRICE DESC";
-        }
-        else $ORDER = "IDDET ASC";
-        echo '
-        <title>'.$TYPE.'</title>
-        ';
+        $user_info = mysqli_fetch_assoc(mysqli_query($link, "SELECT * FROM users WHERE id =".$_SESSION["id"]));
+        
     ?>
+    <title>Mon compte</title>
     <link rel="shortcut icon" type="image/x-icon" href="favicon_io/apple-touch-icon.png"/>
-    <?php require("../connexion/open_session.php"); ?>
 </head>
 <body>
 
@@ -178,105 +174,40 @@
 
     <div class="description_section">
         <div class="container">
-            <h4><a href="Accueil.php">Accueil</a> / <a href="#"><?php echo $TYPE;?></a></h4>
+            <h4><a href="Accueil.php">Accueil</a> / <a href="#">Mon compte</a></h4>
             <div class="details">
-                <h2><?php echo $TYPE;?></h2>
-                <p>
-                    fjzh ebfzjgf bzljh bdaa fziufiaf iupzafaf hfziuzhaif jfhafhe fjzh ebfzjgf bzljh bdaa fziufiaf iupzafaf hfziuzhaif jfhafhe<br>
-                    ,kjz fziuih ah JFHUIZ JDAYvjhg zjhfl jzgefh jfjh zjhfihf jzh fjzh ebfzjgf bzljh bdaa fziufiaf iupzafaf hfziuzhaif jfhafhe<br>
-                    hf hfgez yiuuz jfhzj jfhez jfheh zjhefhzf fhezkjf fjzh ebfzjgf bzljh bdaa fziufiaf iupzafaf hfziuzhaif jfhafhe<br>
-                </p>
+                <?php 
+                    echo "<h2>Informations du compte de ".$user_info["identifiant"]."</h2>";
+                    echo '<br>
+                        <p><strong>Nom :</strong> '.$user_info["name"].'<br><br>
+                        <strong>Pseudo : </strong>'.$user_info["identifiant"].'<br><br>
+                        <strong>Adresse email : </strong>'.$user_info["email"].'<br><br>
+                        </p>
+                    ';
+                ?><br><br>
+                <a href="../connexion/logout.php" id="logout">Se déconnecter</a><br><br><br><br>
+                <a href="../connexion/delete.php" id="delete-account">Effacer mon compte</a>
             </div>
-        </div>
-    </div>
-
-
-    <!--Trie-->
-    <div class="trie">
-        <div class="container">
-            <label for="trie">Trie par : </label>
-            <select name="trie" id="trie" onChange="location.href=''+this.options[this.selectedIndex].value+'';">
-                <option value="#">Pertinence</option>
-                <option value ="?type=<?php echo $TYPE?>&order=AZ">De A à Z</option>
-                <option value ="?type=<?php echo $TYPE?>&order=ZA">De Z à A</option>
-                <option value ="?type=<?php echo $TYPE?>&order=price_asc">Prix bas à élevé</option>
-                <option value ="?type=<?php echo $TYPE?>&order=price_desc">Prix élevé à bas</option>
-            </select>
-        </div>
-    </div>
-    <!--FIN Trie-->
-
-
-
-    <!--Carte de produit 2-->
-    <div class="carte_produit2">
-    <?php 
-        if (isset($_SESSION["login"]) && $TYPE=="favorites"){
-            $all_products = mysqli_query($link, "SELECT products.NAME, products.PRICE, products.TYPE, products.IDDET, favorites.user_id FROM products JOIN favorites ON favorites.product_id = products.IDDET WHERE user_id = ".$_SESSION["id"]." ORDER BY ".$ORDER);
-        }
-        else if ($TYPE!="gift")
-            $all_products = mysqli_query($link, "SELECT * FROM products WHERE TYPE = '".$TYPE."' ORDER BY ".$ORDER);
-        else {
-            $all_products = mysqli_query($link, "SELECT * FROM products ORDER BY rand()");
-        }
-
-        function print_carte($link, $IDDET){
-            echo '
-                <div class="carte">
-                    <img src="images/Produits_IDDET/'.$IDDET.'.jpg">
-                    <div class="details">';
-                            $current_product = mysqli_fetch_assoc(mysqli_query($link, "SELECT * FROM products WHERE IDDET = ".$IDDET));
-            echo '
-                            <p class="marque">'.$current_product["TYPE"].'</p>
-                            <h5>'.$current_product["NAME"].'</h5> 
-                            <p class="prix">'.(intval($current_product["PRICE"])/100).' €</p>
-                            
-                            '.
-                    '</div>
-                    <div class="items">';
-            if (isset($_SESSION["login"])){
-                $check_request = mysqli_query($link, "SELECT * FROM favorites WHERE product_id =".$IDDET." and user_id =".$_SESSION["id"]);
-                if (isset(mysqli_fetch_assoc($check_request)["product_id"])){
-                    //le produit est déjà en fav
-                    echo '<a href="../gestion_produits/soustraction_fav.php?id='.$IDDET.'"><i class="fa fa-heart"></i></a>';
+        </div><br><br>
+        <?php
+            if ($_SESSION["login"] == "admin"){
+                $link = mysqli_connect("localhost", "root", "");
+                mysqli_select_db($link, "among_us");
+                $users_table = mysqli_query($link, "SELECT * FROM users ORDER BY id");
+                echo '<table id="users_table">';
+                while ($row = mysqli_fetch_assoc($users_table)){
+                    echo "<tr><td>";
+                    echo $row["id"]."</td><td>".$row["name"]."</td><td>".$row["identifiant"]."</td><td>".$row["email"]."</td>";
+                    echo "<td><a href='delete.php?id=".$row["id"]."' id='delete_btn'> supprimer </a></td>";
+                    echo "</tr>";
                 }
-                else{
-                    //le produit n'est pas en fav
-                    echo '<a href="../gestion_produits/ajout_fav.php?id='.$IDDET.'"><i class="fa-regular fa-heart"></i></a>';
-                }
-                    
+                echo "</table>";
             }
-            else echo '<a href="#"><i class="fa-regular fa-heart"></i></a>';
-                    echo'   <a href="../gestion_produits/ajout_panier.php?id='.$IDDET.'"><i class="fa-solid fa-basket-shopping"></i></a>
-                            <a href="Presentation_produits?id='.$IDDET.'"><i class="fa-solid fa-eye"></i></a>
-                    </div>
-                </div>
-            ';
-        }
-        $i = 0;
-        echo '<div class="container">';
-        while ($row = mysqli_fetch_assoc($all_products)){
-            if ($i%4 == 0) echo '</div><div class="container">';
-            else if ($i>10) break;
-            print_carte($link, $row["IDDET"]);
-            $i++;
-        }
-    ?>
 
-        <div class="container">
-            
-        </div>
-        <div class="container">
-            
-        </div>
-        <div class="container">
-
-        </div>
+        ?>
     </div>
 
-    <!--FIN Carte de produit 2-->
-
-
+    
 
 
 

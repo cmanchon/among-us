@@ -11,7 +11,20 @@
     <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
     <title>Paiement en ligne</title>
     <link rel="shortcut icon" type="image/x-icon" href="favicon_io/apple-touch-icon.png"/>
-    
+    <?php
+        require("../connexion/open_session.php");
+        if (!isset($_SESSION["login"])){
+            //aucun client connecté -> redirige vers page de connexion
+            echo '<script lang="JavaScript">
+                    window.location.replace("../connexion/login.php");
+                </script>';
+        }
+        else{
+            $link = mysqli_connect("localhost", "root", "");
+            mysqli_select_db($link, "among_us");
+            $user_info = mysqli_fetch_assoc(mysqli_query($link, "SELECT * FROM users WHERE id =".$_SESSION["id"]));
+        }
+    ?>
 </head>
 <body>
 
@@ -38,6 +51,7 @@
             </div>
         </div>
 
+        <form method="post">
         <div class="coordonnees">
             <div class="head">
                 <h2><i class="fa-solid fa-user"></i>  Coordonnées</h2>
@@ -47,12 +61,12 @@
                 <div class="row1">
                     <div class="client">
                         <label for="client">Client</label>
-                        <input type="text" placeholder="Marc Duboit" id="client" name="client">
+                        <input type="text" placeholder="Marc Duboit" id="client" name="client" value=<?php echo "'".$user_info["name"]."'";?>>
                     </div>
 
                     <div class="email">
                         <label for="email">E-mail</label>
-                        <input type="email" placeholder="marc.duboit@live.fr" id="email" name="email">
+                        <input type="email" placeholder="marc.duboit@live.fr" id="email" name="email" value=<?php echo "'".$user_info["email"]."'";?>>
                     </div>
                 </div>
                 <div class="row2">
@@ -79,26 +93,36 @@
             <div class="row">
                 <div class="ligne1">
                     <label for="carte">Numéro de carte</label>
-                    <input type="text" placeholder="numéro de carte">
+                    <input type="text" placeholder="numéro de carte" name="carte">
                 </div>
                 <div class="ligne2">
                     
                     <div class="exp">
                         <label for="carte">Expiration</label>
-                        <input type="text" placeholder="mm / aa">
+                        <input type="text" placeholder="mm / aa" name="expiration">
                     </div>
                     <div class="cvc">
                         <label for="carte">CVC <i class="fa-solid fa-circle-info"></i></label>
-                        <input type="text" placeholder="cvc">
+                        <input type="text" placeholder="cvc" name="cvc">
                     </div>
                    
                 </div>
             </div>
         </div>
         <div class="but_payer">
-            <input type="submit" value="Valider">
+            <input type="submit" name="payer" value="Valider">
         </div>
+        </form>
     </div>
 
 </body>
 </html>
+
+<?php
+    if (isset($_POST["payer"]) && isset($_SESSION["login"])){
+        $adding_request = mysqli_query($link, "INSERT INTO paiement VALUES (".$_SESSION["id"].", '".$_POST["client"]."', '".$_POST["email"]."', '".$_POST["adresse"]."', '".$_POST["pays"]."', '".$_POST["ville"]."', ".$_POST["carte"].", '".$_POST["expiration"]."', ".$_POST["cvc"].")");
+        // if (isset($adding_request){
+                // à faire
+        // })
+    }
+?>

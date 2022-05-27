@@ -9,7 +9,7 @@
     <script src="https://kit.fontawesome.com/ffb4a8c022.js" crossorigin="anonymous"></script>
     <title>Accueil</title>
     <link rel="shortcut icon" type="image/x-icon" href="favicon_io/apple-touch-icon.png"/>
-    <?php  require("../connexion/open_session.php");?>
+    <?php require("../connexion/open_session.php");?>
 </head>
 <body>
 
@@ -53,22 +53,22 @@
 
             <?php
                 if (isset($_SESSION["login"])){
+                    //connecté.e
                     echo '
                     <div class="item">
-                        <a href="#"><i class="fa-solid fa-moon"></i></a>
                         <a href="./boutique.php?type=favorites"><i class="fa-regular fa-heart"></i></a>
                         <a href="./Panier.php"><i class="fa-solid fa-basket-shopping"></i></a>
-                        <a href="../connexion/session.php"><i class="fa-solid fa-user" class="ouvrir" onclick="ouvre()"></i></a>
+                        <a href="./session.php"><i class="fa-solid fa-user"></i></a>
                     </div>
                     ';
                 }
                 else{
+                    //non connecté.e
                     echo '
                     <div class="item">
-                        <a href="#"><i class="fa-solid fa-moon"></i></a>
-                        <a href="../connexion/login.php"><i class="fa-regular fa-heart"></i></a>
-                        <a href="../connexion/login.php"><i class="fa-solid fa-basket-shopping"></i></a>
-                        <a href="../connexion/login.php"><i class="fa-solid fa-user" class="ouvrir" onclick="ouvre()"></i></a>
+                        <a href="#"><i class="fa-regular fa-heart" class="ouvrir" onclick="ouvre()"></i></a>
+                        <a href="#"><i class="fa-solid fa-basket-shopping" class="ouvrir" onclick="ouvre()"></i></a>
+                        <a href="#"><i class="fa-solid fa-user" class="ouvrir" onclick="ouvre()"></i></a>
                     </div>
                     ';
 
@@ -83,7 +83,7 @@
         <section class="connexion" id="connexion">
             <bouton class="btn_close" onclick="ferme()">x</bouton>
             <div class="container">
-                <form action="" class="inscription">
+                <form method="POST" action="../connexion/signup.php" class="inscription">
                     <h1>Je suis nouveau ici</h1>
                     <div class="input">
                         <input type="text" name="identifiant" id="identifiant" placeholder="Pseudo" required>
@@ -92,27 +92,31 @@
                         <input type="email" name="email" id="email" placeholder="E-mail" required>
                         <input type="password" name="password" id="password" placeholder="Mot de passe" required>
                     </div>
-                    <input type="submit" value="S'inscrire">
+                    <input type="submit" value="S'inscrire" name="signup">
                 </form>
     
-                <form action="" class="identification">
+                <form method="POST" action="../connexion/login.php" class="identification">
                     <h1>Connexion</h1>
                     <div class="input">
                         <div class="ligne">
                             <i class="fa-solid fa-envelope"></i>
-                            <input type="email" name="identifiant" id="identifiant" placeholder="* ADRESSE E-MAIL" required>
+                            <input type="email" name="email" id="identifiant" placeholder="* ADRESSE E-MAIL" required>
                         </div>
                         <div class="ligne">
                             <i class="fa-solid fa-lock"></i>
                             <input type="password" name="password" id="password" placeholder="* MOT DE PASSE" required>
                         </div>
                     </div>
-                    <input type="submit" value="Se connecter" name="submit">
+                    <input type="submit" value="Se connecter" name="login">
                     <a href="#">Mot de passe oublié ?</a>
                 </form>
             </div>
     
         </section>
+
+        <?php
+
+        ?>
         <!--FIN Connexion-->
 
         <!-- Menu-->
