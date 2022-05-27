@@ -62,7 +62,7 @@
 
             <div class="item">
                 <a href="#"><i class="fa-solid fa-moon"></i></a>
-                <a href="#"><i class="fa-regular fa-heart"></i></a>
+                <a href="./boutique.php?type=favorites"><i class="fa-regular fa-heart"></i></a>
                 <a href="./Panier.php"><i class="fa-solid fa-basket-shopping"></i></a>
                 <a href="#"><i class="fa-solid fa-user"></i></i></a>
             </div>

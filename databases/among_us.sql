@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: May 26, 2022 at 01:05 PM
+-- Generation Time: May 27, 2022 at 09:43 AM
 -- Server version: 8.0.27
 -- PHP Version: 8.0.13
 
@@ -66,13 +66,33 @@ CREATE TABLE IF NOT EXISTS `carts` (
 --
 
 INSERT INTO `carts` (`product_id`, `user_id`, `quant`, `total_price`) VALUES
-(12, 4, 10, 94990),
+(12, 4, 9, 85491),
 (13, 4, 10, 95010),
 (34, 4, 10, 14990),
 (16, 4, 10, 359990),
 (15, 4, 8, 79992),
 (1, 4, 1, 4999),
 (4, 4, 1, 19999);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `favorites`
+--
+
+DROP TABLE IF EXISTS `favorites`;
+CREATE TABLE IF NOT EXISTS `favorites` (
+  `product_id` int DEFAULT NULL,
+  `user_id` int DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `favorites`
+--
+
+INSERT INTO `favorites` (`product_id`, `user_id`) VALUES
+(23, 4),
+(22, 4);
 
 -- --------------------------------------------------------
 

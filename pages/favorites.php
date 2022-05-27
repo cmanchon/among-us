@@ -73,7 +73,7 @@
 
             <div class="item">
                 <a href="#"><i class="fa-solid fa-moon"></i></a>
-                <a href="./boutique.php?type=favorites"><i class="fa-regular fa-heart"></i></a>
+                <a href="#"><i class="fa-regular fa-heart"></i></a>
                 <a href="./Panier.php"><i class="fa-solid fa-basket-shopping"></i></a>
                 <a href="#"><i class="fa-solid fa-user"></i></i></a>
             </div>
@@ -154,10 +154,7 @@
     <!--Carte de produit 2-->
     <div class="carte_produit2">
     <?php 
-        if (isset($_SESSION["login"]) && $TYPE=="favorites"){
-            $all_products = mysqli_query($link, "SELECT products.NAME, products.PRICE, products.TYPE, products.IDDET, favorites.user_id FROM products JOIN favorites ON favorites.product_id = products.IDDET WHERE user_id = ".$_SESSION["id"]." ORDER BY ".$ORDER);
-        }
-        else if ($TYPE!="gift")
+        if ($TYPE!="gift")
             $all_products = mysqli_query($link, "SELECT * FROM products WHERE TYPE = '".$TYPE."' ORDER BY ".$ORDER);
         else {
             $all_products = mysqli_query($link, "SELECT * FROM products ORDER BY rand()");

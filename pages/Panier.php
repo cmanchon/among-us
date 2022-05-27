@@ -145,11 +145,21 @@
                 </div>
                 <div class="items">
                     <?php 
-                        echo '
-                        <a href="#"><i class="fa-regular fa-heart"></i></a>
-                        <a href="../gestion_produits/ajout_panier.php?id='.$IDDET.'"><i class="fa-solid fa-basket-shopping"></i></a>
-                        <a href="Presentation_produits?id='.$IDDET.'"><i class="fa-solid fa-eye"></i></a>
-                        ';
+                        if (isset($_SESSION["login"])){
+                            $check_request = mysqli_query($link, "SELECT * FROM favorites WHERE product_id =".$IDDET." and user_id =".$_SESSION["id"]);
+                            if (isset(mysqli_fetch_assoc($check_request)["product_id"])){
+                                //le produit est déjà en fav
+                                echo '<a href="../gestion_produits/soustraction_fav.php?id='.$IDDET.'"><i class="fa fa-heart"></i></a>';
+                            }
+                            else{
+                                //le produit n'est pas en fav
+                                echo '<a href="../gestion_produits/ajout_fav.php?id='.$IDDET.'"><i class="fa-regular fa-heart"></i></a>';
+                            }
+                                
+                            }
+                        else echo '<a href="#"><i class="fa-regular fa-heart"></i></a>';
+                            echo'   <a href="../gestion_produits/ajout_panier.php?id='.$IDDET.'"><i class="fa-solid fa-basket-shopping"></i></a>
+                                    <a href="Presentation_produits?id='.$IDDET.'"><i class="fa-solid fa-eye"></i></a>';
                     ?>
                 </div>
             </div>
@@ -169,11 +179,21 @@
                 </div>
                 <div class="items">
                     <?php 
-                        echo '
-                        <a href="#"><i class="fa-regular fa-heart"></i></a>
-                        <a href="../gestion_produits/ajout_panier.php?id='.$IDDET.'"><i class="fa-solid fa-basket-shopping"></i></a>
-                        <a href="Presentation_produits?id='.$IDDET.'"><i class="fa-solid fa-eye"></i></a>
-                        ';
+                        if (isset($_SESSION["login"])){
+                            $check_request = mysqli_query($link, "SELECT * FROM favorites WHERE product_id =".$IDDET." and user_id =".$_SESSION["id"]);
+                            if (isset(mysqli_fetch_assoc($check_request)["product_id"])){
+                                //le produit est déjà en fav
+                                echo '<a href="../gestion_produits/soustraction_fav.php?id='.$IDDET.'"><i class="fa fa-heart"></i></a>';
+                            }
+                            else{
+                                //le produit n'est pas en fav
+                                echo '<a href="../gestion_produits/ajout_fav.php?id='.$IDDET.'"><i class="fa-regular fa-heart"></i></a>';
+                            }
+                                
+                            }
+                        else echo '<a href="#"><i class="fa-regular fa-heart"></i></a>';
+                            echo'   <a href="../gestion_produits/ajout_panier.php?id='.$IDDET.'"><i class="fa-solid fa-basket-shopping"></i></a>
+                                    <a href="Presentation_produits?id='.$IDDET.'"><i class="fa-solid fa-eye"></i></a>';
                     ?>
                 </div>          
                 </div>
@@ -193,11 +213,21 @@
                 </div>
                 <div class="items">
                     <?php 
-                        echo '
-                        <a href="#"><i class="fa-regular fa-heart"></i></a>
-                        <a href="../gestion_produits/ajout_panier.php?id='.$IDDET.'"><i class="fa-solid fa-basket-shopping"></i></a>
-                        <a href="Presentation_produits?id='.$IDDET.'"><i class="fa-solid fa-eye"></i></a>
-                        ';
+                        if (isset($_SESSION["login"])){
+                            $check_request = mysqli_query($link, "SELECT * FROM favorites WHERE product_id =".$IDDET." and user_id =".$_SESSION["id"]);
+                            if (isset(mysqli_fetch_assoc($check_request)["product_id"])){
+                                //le produit est déjà en fav
+                                echo '<a href="../gestion_produits/soustraction_fav.php?id='.$IDDET.'"><i class="fa fa-heart"></i></a>';
+                            }
+                            else{
+                                //le produit n'est pas en fav
+                                echo '<a href="../gestion_produits/ajout_fav.php?id='.$IDDET.'"><i class="fa-regular fa-heart"></i></a>';
+                            }
+                                
+                            }
+                        else echo '<a href="#"><i class="fa-regular fa-heart"></i></a>';
+                            echo'   <a href="../gestion_produits/ajout_panier.php?id='.$IDDET.'"><i class="fa-solid fa-basket-shopping"></i></a>
+                                    <a href="Presentation_produits?id='.$IDDET.'"><i class="fa-solid fa-eye"></i></a>';
                     ?>
                 </div>          
                 </div>
@@ -217,11 +247,21 @@
                 </div>
                 <div class="items">
                     <?php 
-                        echo '
-                        <a href="#"><i class="fa-regular fa-heart"></i></a>
-                        <a href="../gestion_produits/ajout_panier.php?id='.$IDDET.'"><i class="fa-solid fa-basket-shopping"></i></a>
-                        <a href="Presentation_produits?id='.$IDDET.'"><i class="fa-solid fa-eye"></i></a>
-                        ';
+                        if (isset($_SESSION["login"])){
+                            $check_request = mysqli_query($link, "SELECT * FROM favorites WHERE product_id =".$IDDET." and user_id =".$_SESSION["id"]);
+                            if (isset(mysqli_fetch_assoc($check_request)["product_id"])){
+                                //le produit est déjà en fav
+                                echo '<a href="../gestion_produits/soustraction_fav.php?id='.$IDDET.'"><i class="fa fa-heart"></i></a>';
+                            }
+                            else{
+                                //le produit n'est pas en fav
+                                echo '<a href="../gestion_produits/ajout_fav.php?id='.$IDDET.'"><i class="fa-regular fa-heart"></i></a>';
+                            }
+                                
+                            }
+                        else echo '<a href="#"><i class="fa-regular fa-heart"></i></a>';
+                            echo'   <a href="../gestion_produits/ajout_panier.php?id='.$IDDET.'"><i class="fa-solid fa-basket-shopping"></i></a>
+                                    <a href="Presentation_produits?id='.$IDDET.'"><i class="fa-solid fa-eye"></i></a>';
                     ?>
                 </div>           
                 </div>
