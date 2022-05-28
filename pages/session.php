@@ -198,7 +198,7 @@
                 while ($row = mysqli_fetch_assoc($users_table)){
                     echo "<tr><td>";
                     echo $row["id"]."</td><td>".$row["name"]."</td><td>".$row["identifiant"]."</td><td>".$row["email"]."</td>";
-                    echo "<td><a href='delete.php?id=".$row["id"]."' id='delete_btn'> supprimer </a></td>";
+                    echo "<td><a href='../connexion/delete.php?id=".$row["id"]."' id='delete_btn'> supprimer </a></td>";
                     echo "</tr>";
                 }
                 echo "</table>";

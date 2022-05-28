@@ -110,7 +110,8 @@
                     <h5>Prix Total</h5>
                     <h3><?php echo ($total_price/100)." €";?></h3>
                 </div>
-                <input type="submit" value="PAYER" id="recap-button-payer">
+                <!-- <input type="submit" value="PAYER" id="recap-button-payer"> -->
+                <a href="./Paiement.php" id="recap-button-payer">PAYER</a>
             </div>
         </div>
         

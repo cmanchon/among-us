@@ -1793,6 +1793,8 @@ body .paiement .but_payer input:hover {
     opacity: 0.9;
 }
 
+
+
 /* FIN Paiement */
 
 
@@ -1907,11 +1909,12 @@ body .panier .container-panier .recap .prix {
     padding-bottom: 50px;
 }
 
-body .panier .container-panier .recap input {
+body .panier .container-panier .recap #recap-button-payer {
     display: flex;
     justify-content: center;
     text-align: center;
     margin: 0 20px;
+    padding-top: 20px;
     height: 50px;
     width: 100%;
     font-size: 19px;
@@ -1919,8 +1922,14 @@ body .panier .container-panier .recap input {
     background-color: black;
     font-weight: bolder;
     opacity: 0.3;
-    cursor:not-allowed ;
+    /* cursor:not-allowed ; */
 }
+
+body .panier .container-panier .recap #recap-button-payer:hover{
+    transition: 0.3s;
+    opacity: 0.4;
+}
+
 
 .panier_non_vide{
     background-color: #1a1a1a0a;

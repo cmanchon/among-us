@@ -13,17 +13,17 @@
     <link rel="shortcut icon" type="image/x-icon" href="favicon_io/apple-touch-icon.png"/>
     <?php
         require("../connexion/open_session.php");
-        if (!isset($_SESSION["login"])){
-            //aucun client connecté -> redirige vers page de connexion
+        $link = mysqli_connect("localhost", "root", "");
+        mysqli_select_db($link, "among_us");
+        $user_info = mysqli_fetch_assoc(mysqli_query($link, "SELECT * FROM users WHERE id =".$_SESSION["id"]));
+        if (!isset($_SESSION["login"]) || mysqli_num_rows(mysqli_query($link, "SELECT * FROM carts WHERE user_id = ".$_SESSION["id"]))==0){
+            //aucun client connecté ou panier vide -> redirige vers accueil
             echo '<script lang="JavaScript">
-                    window.location.replace("../connexion/login.php");
+                    window.location.replace("./Accueil/php");
                 </script>';
         }
-        else{
-            $link = mysqli_connect("localhost", "root", "");
-            mysqli_select_db($link, "among_us");
-            $user_info = mysqli_fetch_assoc(mysqli_query($link, "SELECT * FROM users WHERE id =".$_SESSION["id"]));
-        }
+        
+        
     ?>
 </head>
 <body>
@@ -113,16 +113,22 @@
             <input type="submit" name="payer" value="Valider">
         </div>
         </form>
+        <?php
+            if (isset($_POST["payer"]) && isset($_SESSION["login"])){
+                $adding_request = mysqli_query($link, "INSERT INTO paiement VALUES (".$_SESSION["id"].', "'.$_POST["client"].'", "'.$_POST["email"].'", "'.$_POST["adresse"].'", "'.$_POST["pays"].'", "'.$_POST["ville"].'", '.$_POST["carte"].', "'.$_POST["expiration"].'", '.$_POST["cvc"].")");
+                if ($adding_request){
+                        if (mysqli_query($link, "UPDATE products JOIN carts ON products.IDDET=carts.product_id SET products.QUANT = products.QUANT-carts.quant WHERE carts.user_id =".$_SESSION["id"]) && mysqli_query($link, "DELETE FROM carts WHERE user_id =".$_SESSION["id"])){
+                            //= si stock mis à jour et panier supprimé
+                            echo '<div class="carte">
+                            <p>Commande validée !<p><br>
+                            <a href="./Accueil.php">Revenir à la page d\'accueil</a> 
+                            </div>';
+                        }
+                }
+            }
+        ?>
     </div>
 
 </body>
 </html>
 
-<?php
-    if (isset($_POST["payer"]) && isset($_SESSION["login"])){
-        $adding_request = mysqli_query($link, "INSERT INTO paiement VALUES (".$_SESSION["id"].", '".$_POST["client"]."', '".$_POST["email"]."', '".$_POST["adresse"]."', '".$_POST["pays"]."', '".$_POST["ville"]."', ".$_POST["carte"].", '".$_POST["expiration"]."', ".$_POST["cvc"].")");
-        // if (isset($adding_request){
-                // à faire
-        // })
-    }
-?>

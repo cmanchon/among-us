@@ -236,7 +236,7 @@
                     <div class="items">';
             if (isset($_SESSION["login"])){
                 $check_request = mysqli_query($link, "SELECT * FROM favorites WHERE product_id =".$IDDET." and user_id =".$_SESSION["id"]);
-                if (isset(mysqli_fetch_assoc($check_request)["product_id"])){
+                if (mysqli_num_rows($check_request)!=0){
                     //le produit est déjà en fav
                     echo '<a href="../gestion_produits/soustraction_fav.php?id='.$IDDET.'"><i class="fa fa-heart"></i></a>';
                 }
@@ -257,7 +257,7 @@
         echo '<div class="container">';
         while ($row = mysqli_fetch_assoc($all_products)){
             if ($i%4 == 0) echo '</div><div class="container">';
-            else if ($i>10) break;
+            // else if ($i>10) break;
             print_carte($link, $row["IDDET"]);
             $i++;
         }
