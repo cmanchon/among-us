@@ -181,11 +181,17 @@
             <h4><a href="Accueil.php">Accueil</a> / <a href="#"><?php echo $TYPE;?></a></h4>
             <div class="details">
                 <h2><?php echo $TYPE;?></h2>
-                <p>
-                    fjzh ebfzjgf bzljh bdaa fziufiaf iupzafaf hfziuzhaif jfhafhe fjzh ebfzjgf bzljh bdaa fziufiaf iupzafaf hfziuzhaif jfhafhe<br>
-                    ,kjz fziuih ah JFHUIZ JDAYvjhg zjhfl jzgefh jfjh zjhfihf jzh fjzh ebfzjgf bzljh bdaa fziufiaf iupzafaf hfziuzhaif jfhafhe<br>
-                    hf hfgez yiuuz jfhzj jfhez jfheh zjhefhzf fhezkjf fjzh ebfzjgf bzljh bdaa fziufiaf iupzafaf hfziuzhaif jfhafhe<br>
-                </p>
+                    <?php 
+                        if ($TYPE=="favorites") echo "<p>Vos produits préférés.</p>";
+                        else {
+                            $description_request = mysqli_query($link, "SELECT * FROM description_type WHERE type = '".$TYPE."'");
+                            if ($description_request!=NULL && mysqli_num_rows($description_request)!=0){
+                                echo "<p>".mysqli_fetch_assoc($description_request)["texte"]."</p>";
+                            }
+                            else 
+                                echo "<p>Nos produits les plus convoités !</p>";       
+                        }
+                    ?>
             </div>
         </div>
     </div>

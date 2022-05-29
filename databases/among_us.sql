@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: May 27, 2022 at 06:45 PM
+-- Generation Time: May 29, 2022 at 08:16 AM
 -- Server version: 8.0.27
 -- PHP Version: 8.0.13
 
@@ -75,9 +75,71 @@ INSERT INTO `carts` (`product_id`, `user_id`, `quant`, `total_price`) VALUES
 (15, 4, 26, 259974),
 (1, 4, 1, 4999),
 (4, 4, 1, 19999),
-(34, 5, 15, 22485),
-(21, 5, 1, 3999),
-(1, 5, 2, 9998);
+(15, 5, 3, 29997),
+(16, 5, 2, 71998);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `descriptions`
+--
+
+DROP TABLE IF EXISTS `descriptions`;
+CREATE TABLE IF NOT EXISTS `descriptions` (
+  `IDDET` int DEFAULT NULL,
+  `texte` varchar(500) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `descriptions`
+--
+
+INSERT INTO `descriptions` (`IDDET`, `texte`) VALUES
+(1, 'Ce grand paquet de mini CREWMATE Among Us spéciale édition CHAPEAU saura <br>égayer votre esprit de déduction ainsi que votre imagination. Pour tout âge, ce <br>pack complet de peluches de poches offre un large choix de couleur et de <br>magnifiques couvre-chefs inspirés du célèbre jeu-vidéo Among Us.<br>\n(Attention à ne pas faire porter le chapeau à n?importe qui !).\n'),
+(2, 'Ce grand paquet de mini CREWMATE Among Us  saura égayer votre esprit de <br>déduction ainsi que votre imagination. Pour tout âge, ce pack complet de peluches <br>de poches offre un large choix de couleur inspirée de celle du célèbre jeu-vidéo <br>Among Us.<br>\n(Attention à ne pas faire porter le chapeau à n\'importe qui !).'),
+(4, 'Ce grand paquet de mini CREWMATE LÉGENDAIRES édition LIMITÉE Among Us <br> saura égayer votre esprit de déduction et votre style. Conçus pour les experts du <br> célèbre jeu-vidéo multijoueur de trahison Among Us, celle édition comprend<br> 7 mini peluches ayant des tenues ainsi que des couvre-chefs personnalisés.<br>\n(Attention à ne pas faire des jaloux dans l\'équipage !).\n'),
+(3, 'Ce grand paquet de mini CREWMATE LÉGENDAIRES édition LIMITÉE Among Us<br> saura égayer votre esprit de déduction et vous permettra de mettre en avant votre<br> collection unique. Conçus pour les experts du célèbre jeu-vidéo multijoueur<br> de trahison Among Us, celle édition unique est vendu à un nombre limité d?exemplaire.<br>\n(Attention à ne pas faire des jaloux dans l\'équipage !).'),
+(5, 'Cette douce peluche, à la combinaison soyeuse, vous accompagnera des tréfonds de <br>l\'espace, jusqu\'au coeur d\'un volcan. Soyez accompagné en tout temps d\'un <br>CREWMATE de votre couleur préférée vous rappelant le célèbre jeu vidéo de <br>déduction et de trahison multijoueur et multiplateforme Among Us.<br>\n(Attention, nous ne pouvons pas garantir qu\'il ne s\'agisse pas de l\'imposteur !)'),
+(6, 'Cette douce peluche, à la combinaison soyeuse, vous accompagnera des tréfonds de <br>l\'espace, jusqu\'au coeur d\'un volcan. Soyez accompagné en tout temps d\'un <br>CREWMATE de votre couleur préférée vous rappelant le célèbre jeu vidéo de <br>déduction et de trahison multijoueur et multiplateforme Among Us.<br>\n(Attention, nous ne pouvons pas garantir qu\'il ne s\'agisse pas de l\'imposteur !)'),
+(7, 'Cette douce peluche, à la combinaison soyeuse, vous accompagnera des tréfonds de <br>l\'espace, jusqu\'au coeur d\'un volcan. Soyez accompagné en tout temps d\'un <br>CREWMATE de votre couleur préférée vous rappelant le célèbre jeu vidéo de <br>déduction et de trahison multijoueur et multiplateforme Among Us.<br>\n(Attention, nous ne pouvons pas garantir qu\'il ne s\'agisse pas de l\'imposteur !)'),
+(8, 'Cette douce peluche, à la combinaison soyeuse, vous accompagnera des tréfonds de <br>l\'espace, jusqu\'au coeur d\'un volcan. Soyez accompagné en tout temps d\'un <br>CREWMATE de votre couleur préférée vous rappelant le célèbre jeu vidéo de <br>déduction et de trahison multijoueur et multiplateforme Among Us.<br>\n(Attention, nous ne pouvons pas garantir qu\'il ne s\'agisse pas de l\'imposteur !)'),
+(9, 'Cette douce peluche, à la combinaison soyeuse, vous accompagnera des tréfonds de <br>l\'espace, jusqu\'au coeur d\'un volcan. Soyez accompagné en tout temps d\'un <br>CREWMATE de votre couleur préférée vous rappelant le célèbre jeu vidéo de <br>déduction et de trahison multijoueur et multiplateforme Among Us.<br>\n(Attention, nous ne pouvons pas garantir qu\'il ne s\'agisse pas de l\'imposteur !)'),
+(10, 'Cette douce peluche, à la combinaison soyeuse, vous accompagnera des tréfonds de <br>l\'espace, jusqu\'au coeur d\'un volcan. Soyez accompagné en tout temps d\'un <br>CREWMATE de votre couleur préférée vous rappelant le célèbre jeu vidéo de <br>déduction et de trahison multijoueur et multiplateforme Among Us.<br>\n(Attention, nous ne pouvons pas garantir qu\'il ne s\'agisse pas de l\'imposteur !)'),
+(11, 'Grâce à ce CREWMATE cosplay GONFLABLE, incarnez en grandeur nature les <br>personages du célèbre jeu de déduction et de trahison multijoueur et <br>multuplateforme Among Us. Il ne tiendra qu\'à vous de ne pas être suspicieux !<br>\n(attention, ne pas gonfler avec de l\'hélium)\n'),
+(12, 'Grâce à ce CREWMATE cosplay GONFLABLE, incarnez en grandeur nature les <br>personages du célèbre jeu de déduction et de trahison multijoueur et <br>multuplateforme Among Us. Il ne tiendra qu\'à vous de ne pas être suspicieux !<br>\n(attention, ne pas gonfler avec de l\'hélium)\n'),
+(13, 'Grâce à ce CREWMATE cosplay GONFLABLE, incarnez en grandeur nature les <br>personages du célèbre jeu de déduction et de trahison multijoueur et <br>multuplateforme Among Us. Il ne tiendra qu\'à vous de ne pas être suspicieux !<br>\n(attention, ne pas gonfler avec de l\'hélium)\n'),
+(14, 'Grâce à ce CREWMATE cosplay GONFLABLE, incarnez en grandeur nature les <br>personages du célèbre jeu de déduction et de trahison multijoueur et <br>multuplateforme Among Us. Il ne tiendra qu\'à vous de ne pas être suspicieux !<br>\n(attention, ne pas gonfler avec de l\'hélium)\n'),
+(15, 'Grâce à ce CREWMATE cosplay GONFLABLE, incarnez en grandeur nature les <br>personages du célèbre jeu de déduction et de trahison multijoueur et <br>multuplateforme Among Us. Il ne tiendra qu\'à vous de ne pas être suspicieux !<br>\n(attention, ne pas gonfler avec de l\'hélium)\n'),
+(16, 'Grâce à ce pack CREWMATE cosplay GONFLABLE, incarnez en amis et en famille les <br>personages du célèbre jeu de déduction et de trahison multijoueur et <br>multuplateforme Among Us. Soyez vigilent si vous croisez l\'imposteur !<br>\n(Attention, ne pas gonfler avec de l\'hélium)\n'),
+(21, 'Avec ce pack de Hoodie & Jogging IMPOSTORS AMONG US pour garçon, portez dans<br> la cours de récréation les couleurs du célèbre jeu vidéo de trahison <br>spatiale Among Us.\n'),
+(22, 'Avec ce T-shirt ANGELIC CREWMATE pour fille, portez dans la cours de récréation les <br>couleurs du célèbre jeu vidéo de trahison spatiale Among Us.\n'),
+(23, 'Cette casquette AMONG US AMONG US pour enfant à taille unique vous permettra<br> de rester à l\'abri du soleil tout en arborant votre passion pour le jeu <br>vidéo de trahison spatiale Among Us.\n'),
+(31, 'Ce Mug CREWMATE rouge sculpté vous permettra de boire dans un récipient à la<br> forme d\'un CREWMATE inspiré du célèbre jeu vidéo de trahison spatiale<br> multijoueur Among Us.<br>\n(Attention que l\'imposteur n\'ait rien mis dans votre boisson !)\n'),
+(32, 'Ce Mug BEZOS ETAIT L\'IMPOSTEUR blanc vous permettra de boir dans un récipient <br>sobre et classieux arborant la véritable identité du CREEWMATE BEZOS inspiré <br>du célèbre jeu vidéo de trahison multijoueur multuplateforme spatiale Among Us.\n'),
+(33, 'Décorez votre chambre, ou toute autre pièce de votre vaisseau spatiale, grâce à ce <br>magnifique poster de jeu AMONG US IMPOSTOR. Levez-vous tous les matins en <br>ayant la possibilité d\'admirer les CREWMATES et les IMPOSTEURS voguer à leurs <br>activités quotidiennes dans l\'espace.\n'),
+(34, 'Augmentez votre DPI et votre AIM lors de chacune de vos tâches de CREWMATE <br>grâce à ce tapis de souris AMONG US et à sa couverture en caoutchouc <br>ultralégere pour une précision et un confort maximaux.\n');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `description_type`
+--
+
+DROP TABLE IF EXISTS `description_type`;
+CREATE TABLE IF NOT EXISTS `description_type` (
+  `type` varchar(50) DEFAULT NULL,
+  `texte` varchar(400) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `description_type`
+--
+
+INSERT INTO `description_type` (`type`, `texte`) VALUES
+('plush', 'Profitez ici de nos peluches douces et soyeuses. Soyez accompagné en tout temps d\'un <br>CREWMATE de votre couleur préférée vous rappelant le célèbre jeu vidéo de <br>déduction et de trahison multijoueur et multiplateforme Among Us.<br>'),
+('cosplay', 'Seul ou en famille, incarnez en grandeur nature les personages du célèbre jeu de <br>déduction et de trahison multijoueur et multiplateforme Among Us. Il ne <br>tiendra qu\'à vous de ne pas être suspicieux !<br>\n(attention, ne pas gonfler avec de l\'hélium)\n'),
+('clothing', 'Habillez vous de nos vêtements Among Us pour montrer les couleurs du célèbre <br> jeu vidéo de trahison dans la cour de récréation, tout en étant dans un confort <br> maximal.\n'),
+('other', 'Profitez de nos meilleurs accessoires aux couleurs du jeu vidéo de trahison multiplatforme <br> Among Us. Équipez votre bureau d\'affiches et de tapis de souris <br>Among Us pour jouer dans les meilleures conditions.\n');
 
 -- --------------------------------------------------------
 
@@ -96,9 +158,21 @@ CREATE TABLE IF NOT EXISTS `favorites` (
 --
 
 INSERT INTO `favorites` (`product_id`, `user_id`) VALUES
-(15, 5),
+(22, 5),
 (23, 4),
-(22, 4);
+(22, 4),
+(11, 5),
+(12, 5),
+(13, 5),
+(14, 5),
+(15, 5),
+(16, 5),
+(21, 5),
+(23, 5),
+(31, 5),
+(32, 5),
+(33, 5),
+(34, 5);
 
 -- --------------------------------------------------------
 
@@ -125,7 +199,7 @@ CREATE TABLE IF NOT EXISTS `paiement` (
 
 INSERT INTO `paiement` (`userid`, `name`, `email`, `adresse`, `pays`, `ville`, `num_carte`, `expiration`, `cvc`) VALUES
 (4, '', 'manchon.clara@gmail.com', '26 AVENUE ALFRED SAUVY', 'France', 'PERPIGNAN', 0, '09/23', 569),
-(5, 'Manchon Clara', 'manchon.clara@gmail.com', '26 AVENUE ALFRED SAUVY', 'France', 'PERPIGNAN', 0, '09/23', 569);
+(5, 'Bfever Rayenne', 'etoiles@gmail.com', 'Rue de l\'Etoiles', 'France', 'Paris', 2147483647, '10/23', 123);
 
 -- --------------------------------------------------------
 
@@ -156,9 +230,9 @@ INSERT INTO `products` (`NAME`, `QUANT`, `PRICE`, `COLOR`, `TYPE`, `IDDET`) VALU
 ('CREWMATE cyan cosplay GONFLABLE', 200, 9999, 'cyan', 'cosplay', 15),
 ('Pack familial CREWMATE cosplay GONFLABLES', 200, 35999, 'Pack multiple', 'cosplay', 16),
 ('Hoodie & Jogging IMPOSTORS AMONG US pour garçon', 200, 3999, 'rouge', 'clothing', 21),
-('T-shirt ANGELIC CREWMATE pour fille', 200, 1599, 'blanc', 'clothing', 22),
+('T-shirt ANGELIC CREWMATE pour fille', 198, 1599, 'blanc', 'clothing', 22),
 ('Casquette AMONG US AMONG US pour enfant à taille unique', 200, 1724, 'noir', 'clothing', 23),
-('Pack 6 mini CREWMATE édition spéciale CHAPEAU', 150, 4999, 'Pack multiple', 'plush', 1),
+('Pack 6 mini CREWMATE édition spéciale CHAPEAU', 149, 4999, 'Pack multiple', 'plush', 1),
 ('Pack 6 mini CREWMATE édition standard', 850, 2500, 'Pack multiple', 'plush', 2),
 ('Pack 6 mini CREWMATE LÉGENDAIRES édition LIMITÉE', 5, 24590, 'Pack multiple', 'plush', 3),
 ('Pack 6 mini CREWMATE LÉGENDAIRES édition SPÉCIALE', 50, 19999, 'Pack multiple', 'plush', 4),
@@ -166,7 +240,7 @@ INSERT INTO `products` (`NAME`, `QUANT`, `PRICE`, `COLOR`, `TYPE`, `IDDET`) VALU
 ('CREWMATE rouge peluche', 1500, 1995, 'rouge', 'plush', 6),
 ('CREWMATE noir peluche', 1500, 1998, 'noir', 'plush', 7),
 ('CREWMATE rose peluche', 1500, 1999, 'rose', 'plush', 8),
-('CREWMATE blanc peluche', 1500, 1993, 'blanc', 'plush', 9),
+('CREWMATE blanc peluche', 1499, 1993, 'blanc', 'plush', 9),
 ('CREWMATE jaune peluche', 1500, 1999, 'jaune', 'plush', 10),
 ('Mug CREWMATE rouge sculpté', 200, 2499, 'rouge', 'other', 31),
 ('Mug BEZOS ETAIT L’IMPOSTEUR blanc', 200, 999, 'blanc', 'other', 32),
@@ -197,7 +271,7 @@ INSERT INTO `users` (`id`, `name`, `email`, `password`, `identifiant`) VALUES
 (4, 'Manchon Clara', 'manchon.clara@gmail.com', 'motdepasse', 'cmanchon'),
 (2, 'Bellaïd William', 'poundwinner@gmail.com', 'warioisthebest', 'Glutonny'),
 (1, '  admin', 'admin@gmail.com', 'admin', 'admin'),
-(5, 'Philippe Jean', 'jean.philippe@gmail.com', 'mdp92', 'JPdu92');
+(5, 'Bfever Rayenne', 'etoiles@gmail.com', 'pacman', 'Etoiles');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

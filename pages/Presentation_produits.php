@@ -12,9 +12,16 @@
     <link rel="shortcut icon" type="image/x-icon" href="favicon_io/apple-touch-icon.png"/>
     <?php require("../connexion/open_session.php");
     if (isset($_GET["id"])) $IDDET = $_GET["id"];
-    else $IDDET = 9;            //ID de ce produit, à modifier pour modifier le titre et le prix
+    else $IDDET = 9;            //ID de ce produit, à modifier pour modifier la page
     $link = mysqli_connect("localhost", "root", "");
     mysqli_select_db($link, "among_us");
+    if (mysqli_num_rows(mysqli_query($link, "SELECT * FROM products WHERE IDDET=".$IDDET))==0){
+        echo '
+        <script lang="JavaScript">
+            window.location.replace("./Accueil.php");
+        </script>
+    ';
+    }
     $current_product = mysqli_fetch_assoc(mysqli_query($link, "SELECT * FROM products WHERE IDDET=".$IDDET));
     echo '<title>'.$current_product["NAME"].'</title>';
     ?>
@@ -197,14 +204,14 @@
                     ?>           
                 <div class="description">
                     <h3>Description</h3>
-                    <p> jkzkzkjflkjMAF dzjbfjbl bzjHBLJB JBJLBZFJBZZJBFJ FBJZJLHJZ ZBJLF <br>
-                        jkzkzkjflkjMAF dzjbfjbl bzjHBLJB JBJLBZFJBZZJBFJ FBJZJLHJZ ZBJLF <br>
-                        jkzkzkjflkjMAF dzjbfjbl bzjHBLJB JBJLBZFJBZZJBFJ FBJZJLHJZ ZBJLF <br>
-                        jkzkzkjflkjMAF dzjbfjbl bzjHBLJB JBJLBZFJBZZJBFJ FBJZJLHJZ ZBJLF <br>
-                        jkzkzkjflkjMAF dzjbfjbl bzjHBLJB JBJLBZFJBZZJBFJ FBJZJLHJZ ZBJLF <br>
-                        jkzkzkjflkjMAF dzjbfjbl bzjHBLJB JBJLBZFJBZZJBFJ FBJZJLHJZ ZBJLF <br>
-
-                    </p>
+                    <?php 
+                        $description_request = mysqli_query($link, "SELECT * FROM descriptions WHERE IDDET = ".$IDDET);
+                        if ($description_request!=NULL && mysqli_num_rows($description_request)!=0){
+                            echo "<p>".mysqli_fetch_assoc($description_request)["texte"]."</p>";
+                        }
+                        else 
+                            echo "<p>Notre produit le plus convoité !</p>";        
+                    ?>
                 </div>
 
                 <div class="ajout">
