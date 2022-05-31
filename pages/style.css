@@ -2189,6 +2189,97 @@ body .panier .container-panier .recap #recap-button-payer:hover{
 
 /* FIN session */
 
+/* Confirmation_commande */
+
+.confirmation_paiement {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.confirmation_paiement .head {
+    text-align: center;
+    background-color: #1a1a1a;
+    color : white;
+    padding-bottom: 20px;
+}
+
+.confirmation_paiement .head .container{
+    padding-top: 10px ;
+    margin-bottom: 5px;
+}
+
+
+.confirmation_paiement .head .container h3 {
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+.confirmation_paiement .head .container p {
+    margin-bottom: 15px;
+}
+
+.confirmation_paiement .head .container a {
+    font-size: 20px;
+    color : red;
+}
+
+.confirmation_paiement .texte {
+    margin : 40px;
+}
+
+.confirmation_paiement .texte span {
+    font-weight: bolder;
+}
+
+.confirmation_paiement .texte .paragraphe {
+    width: 770px;
+}
+
+.confirmation_paiement .texte .paragraphe1 {
+    margin: 30px 0;
+}
+
+.PDF_ACCUEIL {
+    margin: 40px;
+    display : flex;
+    flex-wrap: nowrap;
+}
+
+.PDF_ACCUEIL .PDF {
+    text-align: center;
+    color : white;
+    padding: 15px 30px;
+    outline: none;
+    border: none;
+    background-color: #1a1a1a;
+    opacity: 0.7;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.PDF_ACCUEIL .PDF:hover {
+    opacity: 1;
+}
+
+
+.PDF_ACCUEIL .retour {
+    text-align: center;
+    color : white;
+    background-color: red;
+    opacity: 0.7;
+    padding: 15px 70px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+}
+
+.PDF_ACCUEIL .retour:hover {
+    opacity: 1;
+}
+
+
+/* FIN Confirmation_commande */
+
+
 /* Responsive */
 
 /* Format Accueil*/
