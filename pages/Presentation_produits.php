@@ -218,11 +218,23 @@
                     <form method="post">
                         <?php $_POST["product_id"] = $current_product["IDDET"]; //id à automatiser?>             
                         <input type="submit" value="Ajouter au panier" id="add_or_buy" name="add_to_cart">
-                        <input type="submit" value="Achetez maintenant" id="add_or_buy" name="buy_now">
+                        <input type="submit" value="Acheter maintenant" id="add_or_buy" name="buy_now">
                     </form>
                     <?php 
-                        if (isset($_POST["add_to_cart"]))
-                            require("../gestion_produits/ajout_panier.php");?>             
+                        if (!isset($_SESSION["login"]) && isset($_POST["add_to_cart"]) || !isset($_SESSION["login"]) && isset($_POST["buy_now"])){
+                            echo '<script>document.getElementById("connexion").style.display="block";</script>';
+                        }
+                        else if (isset($_POST["add_to_cart"]) && isset($_SESSION["login"])){
+                            require("../gestion_produits/ajout_panier.php");
+                        } 
+                        else if (isset($_POST["buy_now"]) && isset($_SESSION["login"])){
+                            echo '
+                                <script lang="JavaScript">
+                                    window.location.replace("./Paiement.php?id='.$IDDET.'");
+                                </script>
+                            ';
+                        } 
+                    ?>             
                 </div>
 
                 

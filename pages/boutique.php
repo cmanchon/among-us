@@ -252,32 +252,24 @@
                 }
                     
             }
-            else echo '<a href="#"><i class="fa-regular fa-heart"></i></a>';
-                    echo'   <a href="../gestion_produits/ajout_panier.php?id='.$IDDET.'"><i class="fa-solid fa-basket-shopping"></i></a>
-                            <a href="Presentation_produits?id='.$IDDET.'"><i class="fa-solid fa-eye"></i></a>
-                    </div>
-                </div>
+            else echo '<a href="./Accueil.php?log=log"><i class="fa-regular fa-heart"></i></a>';
+            echo'   <a href="../gestion_produits/ajout_panier.php?id='.$IDDET.'"><i class="fa-solid fa-basket-shopping"></i></a>
+                    <a href="Presentation_produits?id='.$IDDET.'"><i class="fa-solid fa-eye"></i></a>
+            </div>
+        </div>
             ';
         }
         $i = 0;
         echo '<div class="container">';
         while ($row = mysqli_fetch_assoc($all_products)){
-            if ($i%4 == 0) echo '</div><div class="container">';
+            if ($i%4 == 0 && $i!=0) echo '</div><div class="container">';
             // else if ($i>10) break;
             print_carte($link, $row["IDDET"]);
             $i++;
         }
+        echo "</div>";
     ?>
 
-        <div class="container">
-            
-        </div>
-        <div class="container">
-            
-        </div>
-        <div class="container">
-
-        </div>
     </div>
 
     <!--FIN Carte de produit 2-->

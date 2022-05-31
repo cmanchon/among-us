@@ -2,10 +2,10 @@
 -- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1:3306
--- Generation Time: May 29, 2022 at 08:16 AM
--- Server version: 8.0.27
--- PHP Version: 8.0.13
+-- Hôte : 127.0.0.1:3306
+-- Généré le : mar. 31 mai 2022 à 15:45
+-- Version du serveur : 8.0.27
+-- Version de PHP : 8.0.13
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `among_us`
+-- Base de données : `among_us`
 --
 CREATE DATABASE IF NOT EXISTS `among_us` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
 USE `among_us`;
@@ -26,7 +26,7 @@ USE `among_us`;
 -- --------------------------------------------------------
 
 --
--- Table structure for table `avis`
+-- Structure de la table `avis`
 --
 
 DROP TABLE IF EXISTS `avis`;
@@ -38,7 +38,7 @@ CREATE TABLE IF NOT EXISTS `avis` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Dumping data for table `avis`
+-- Déchargement des données de la table `avis`
 --
 
 INSERT INTO `avis` (`userid`, `note`, `texte`, `IDDET`) VALUES
@@ -46,12 +46,13 @@ INSERT INTO `avis` (`userid`, `note`, `texte`, `IDDET`) VALUES
 (4, 4, 'je suis choquer aussi de la qualité de ce produit', 15),
 (5, 5, 'produit de fou omg je suis choquer', 15),
 (4, 5, 'j\'aimerais trop avoir ce magnifique t shirt', 22),
-(4, 5, 't shirt de fou je le veux', 22);
+(4, 5, 't shirt de fou je le veux', 22),
+(4, 5, 'Belle couleur.', 5);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `carts`
+-- Structure de la table `carts`
 --
 
 DROP TABLE IF EXISTS `carts`;
@@ -64,7 +65,7 @@ CREATE TABLE IF NOT EXISTS `carts` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Dumping data for table `carts`
+-- Déchargement des données de la table `carts`
 --
 
 INSERT INTO `carts` (`product_id`, `user_id`, `quant`, `total_price`) VALUES
@@ -72,16 +73,34 @@ INSERT INTO `carts` (`product_id`, `user_id`, `quant`, `total_price`) VALUES
 (13, 4, 10, 95010),
 (34, 4, 10, 14990),
 (16, 4, 10, 359990),
-(15, 4, 26, 259974),
-(1, 4, 1, 4999),
-(4, 4, 1, 19999),
-(15, 5, 3, 29997),
-(16, 5, 2, 71998);
+(15, 4, 27, 269973);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `descriptions`
+-- Structure de la table `commande`
+--
+
+DROP TABLE IF EXISTS `commande`;
+CREATE TABLE IF NOT EXISTS `commande` (
+  `num_commande` int DEFAULT NULL,
+  `user_id` int DEFAULT NULL,
+  `product_id` int DEFAULT NULL,
+  `quant` int DEFAULT NULL,
+  `validation` tinyint(1) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Déchargement des données de la table `commande`
+--
+
+INSERT INTO `commande` (`num_commande`, `user_id`, `product_id`, `quant`, `validation`) VALUES
+(1, 4, 1, 1, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `descriptions`
 --
 
 DROP TABLE IF EXISTS `descriptions`;
@@ -91,7 +110,7 @@ CREATE TABLE IF NOT EXISTS `descriptions` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Dumping data for table `descriptions`
+-- Déchargement des données de la table `descriptions`
 --
 
 INSERT INTO `descriptions` (`IDDET`, `texte`) VALUES
@@ -122,7 +141,7 @@ INSERT INTO `descriptions` (`IDDET`, `texte`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `description_type`
+-- Structure de la table `description_type`
 --
 
 DROP TABLE IF EXISTS `description_type`;
@@ -132,7 +151,7 @@ CREATE TABLE IF NOT EXISTS `description_type` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Dumping data for table `description_type`
+-- Déchargement des données de la table `description_type`
 --
 
 INSERT INTO `description_type` (`type`, `texte`) VALUES
@@ -144,7 +163,7 @@ INSERT INTO `description_type` (`type`, `texte`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `favorites`
+-- Structure de la table `favorites`
 --
 
 DROP TABLE IF EXISTS `favorites`;
@@ -154,30 +173,18 @@ CREATE TABLE IF NOT EXISTS `favorites` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Dumping data for table `favorites`
+-- Déchargement des données de la table `favorites`
 --
 
 INSERT INTO `favorites` (`product_id`, `user_id`) VALUES
-(22, 5),
 (23, 4),
 (22, 4),
-(11, 5),
-(12, 5),
-(13, 5),
-(14, 5),
-(15, 5),
-(16, 5),
-(21, 5),
-(23, 5),
-(31, 5),
-(32, 5),
-(33, 5),
-(34, 5);
+(21, 4);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `paiement`
+-- Structure de la table `paiement`
 --
 
 DROP TABLE IF EXISTS `paiement`;
@@ -190,21 +197,23 @@ CREATE TABLE IF NOT EXISTS `paiement` (
   `ville` varchar(100) DEFAULT NULL,
   `num_carte` int DEFAULT NULL,
   `expiration` varchar(50) DEFAULT NULL,
-  `cvc` int DEFAULT NULL
+  `cvc` int DEFAULT NULL,
+  `num_commande` int DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Dumping data for table `paiement`
+-- Déchargement des données de la table `paiement`
 --
 
-INSERT INTO `paiement` (`userid`, `name`, `email`, `adresse`, `pays`, `ville`, `num_carte`, `expiration`, `cvc`) VALUES
-(4, '', 'manchon.clara@gmail.com', '26 AVENUE ALFRED SAUVY', 'France', 'PERPIGNAN', 0, '09/23', 569),
-(5, 'Bfever Rayenne', 'etoiles@gmail.com', 'Rue de l\'Etoiles', 'France', 'Paris', 2147483647, '10/23', 123);
+INSERT INTO `paiement` (`userid`, `name`, `email`, `adresse`, `pays`, `ville`, `num_carte`, `expiration`, `cvc`, `num_commande`) VALUES
+(4, '', 'manchon.clara@gmail.com', '26 AVENUE ALFRED SAUVY', 'France', 'PERPIGNAN', 0, '09/23', 569, 0),
+(4, 'Manchon Clara', 'manchon.clara@gmail.com', 'Chez moi', 'France', 'Perpignan', 2147483647, '01/23', 123, 0),
+(4, 'Manchon Clara', 'manchon.clara@gmail.com', 'Chez moi', 'France', 'Perpignan', 2147483647, '10/25', 159, 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `products`
+-- Structure de la table `products`
 --
 
 DROP TABLE IF EXISTS `products`;
@@ -219,20 +228,20 @@ CREATE TABLE IF NOT EXISTS `products` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `products`
+-- Déchargement des données de la table `products`
 --
 
 INSERT INTO `products` (`NAME`, `QUANT`, `PRICE`, `COLOR`, `TYPE`, `IDDET`) VALUES
 ('CREWMATE rouge cosplay GONFLABLE', 200, 9499, 'rouge', 'cosplay', 11),
-('CREWMATE rose cosplay GONFLABLE', 200, 9499, 'rose', 'cosplay', 12),
+('CREWMATE rose cosplay GONFLABLE', 199, 9499, 'rose', 'cosplay', 12),
 ('CREWMATE bleu cosplay GONFLABLE', 200, 9501, 'bleu', 'cosplay', 13),
 ('CREWMATE orange cosplay GONFLABLE', 200, 9499, 'orange', 'cosplay', 14),
-('CREWMATE cyan cosplay GONFLABLE', 200, 9999, 'cyan', 'cosplay', 15),
-('Pack familial CREWMATE cosplay GONFLABLES', 200, 35999, 'Pack multiple', 'cosplay', 16),
-('Hoodie & Jogging IMPOSTORS AMONG US pour garçon', 200, 3999, 'rouge', 'clothing', 21),
+('CREWMATE cyan cosplay GONFLABLE', 197, 9999, 'cyan', 'cosplay', 15),
+('Pack familial CREWMATE cosplay GONFLABLES', 198, 35999, 'Pack multiple', 'cosplay', 16),
+('Hoodie & Jogging IMPOSTORS AMONG US pour garçon', 199, 3999, 'rouge', 'clothing', 21),
 ('T-shirt ANGELIC CREWMATE pour fille', 198, 1599, 'blanc', 'clothing', 22),
-('Casquette AMONG US AMONG US pour enfant à taille unique', 200, 1724, 'noir', 'clothing', 23),
-('Pack 6 mini CREWMATE édition spéciale CHAPEAU', 149, 4999, 'Pack multiple', 'plush', 1),
+('Casquette AMONG US AMONG US pour enfant à taille unique', 199, 1724, 'noir', 'clothing', 23),
+('Pack 6 mini CREWMATE édition spéciale CHAPEAU', 148, 4999, 'Pack multiple', 'plush', 1),
 ('Pack 6 mini CREWMATE édition standard', 850, 2500, 'Pack multiple', 'plush', 2),
 ('Pack 6 mini CREWMATE LÉGENDAIRES édition LIMITÉE', 5, 24590, 'Pack multiple', 'plush', 3),
 ('Pack 6 mini CREWMATE LÉGENDAIRES édition SPÉCIALE', 50, 19999, 'Pack multiple', 'plush', 4),
@@ -250,7 +259,7 @@ INSERT INTO `products` (`NAME`, `QUANT`, `PRICE`, `COLOR`, `TYPE`, `IDDET`) VALU
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Structure de la table `users`
 --
 
 DROP TABLE IF EXISTS `users`;
@@ -264,14 +273,12 @@ CREATE TABLE IF NOT EXISTS `users` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Dumping data for table `users`
+-- Déchargement des données de la table `users`
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `identifiant`) VALUES
 (4, 'Manchon Clara', 'manchon.clara@gmail.com', 'motdepasse', 'cmanchon'),
-(2, 'Bellaïd William', 'poundwinner@gmail.com', 'warioisthebest', 'Glutonny'),
-(1, '  admin', 'admin@gmail.com', 'admin', 'admin'),
-(5, 'Bfever Rayenne', 'etoiles@gmail.com', 'pacman', 'Etoiles');
+(1, '  admin', 'admin@gmail.com', 'admin', 'admin');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

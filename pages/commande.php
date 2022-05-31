@@ -5,12 +5,35 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href ="style.css" rel = "stylesheet" type = "text/css" />
-    <script type="text/javascript" src="script.js"></script>
+    <script src="script.js"></script>
     <script src="https://kit.fontawesome.com/ffb4a8c022.js" crossorigin="anonymous"></script>
-    <title>Accueil</title>
-    <link rel="shortcut icon" type="image/x-icon" href="favicon_io/apple-touch-icon.png"/>
-    <?php require("../connexion/open_session.php");
+    <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css"/>
+    <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+    <?php
+
+        require("../connexion/open_session.php");
+        if (!isset($_SESSION["login"])){
+            //non connecté.e -> redirige vers l'accueil
+            echo '<script lang="JavaScript">
+                window.location.replace("./Accueil.php");
+            </script>';
+        }
+        $link = mysqli_connect("localhost", "root", "");
+        mysqli_select_db($link, "among_us");
+        if (isset($_GET["id"])){
+            $commande_info = mysqli_query($link, "SELECT commande.num_commande, commande.user_id, commande.product_id, commande.quant, commande.validation, products.NAME, products.PRICE FROM commande JOIN products ON products.IDDET=commande.product_id WHERE user_id =".$_GET["id"]);
+            $user_name = mysqli_fetch_assoc(mysqli_query($link, "SELECT name FROM users WHERE id = ".$_GET["id"]))["name"];
+        } 
+        else {
+            //pas de id défini -> redirige vers la page session
+            echo '<script lang="JavaScript">
+                window.location.replace("./session.php");
+            </script>';
+        }
+        
     ?>
+    <title>Commandes</title>
+    <link rel="shortcut icon" type="image/x-icon" href="favicon_io/apple-touch-icon.png"/>
 </head>
 <body>
 
@@ -158,188 +181,43 @@
     </header>
     <!-- FIN Header-->
 
-    <!--Image de presentation-->
-    <div class="spot">
+    <div class="description_section">
         <div class="container">
-          <div class="slider">
-              <div class="slides">
-                <img src="images/Font/5.jpg">
-            </div>
-  
-            <div class="slides">
-                <img src="images/Font/7.jpg">
-            </div> 
-          </div>
-        </div>
-    </div>
-
-
-    <!--Carte_promo-->
-    <div class="carte_promo">
-        <div class="container container1">
+            <h4><a href="Accueil.php">Accueil</a> / <a href="#">Commandes</a></h4>
             <div class="details">
-                <p>Du 32 juillet<br> au 33 juillet 2022</p>
-                <h2>-10%</h2>
-                <h3>dès 50€ d'achat</h3>
-                <button>J'EN PROFITE</button>
-                <a href="#">*Voir les conditions</a>
-            </div>
-        </div>
-        <div class="container container2">
-        </div>
-    </div>
-
-    <!--FIN Carte_promo-->
-
-
-    <!--Carte de produit 2-->
-    <div class="carte_produit2">
-        <?php 
-        $link = mysqli_connect("localhost", "root", "");
-        mysqli_select_db($link, "among_us");
-        $all_products = mysqli_fetch_assoc(mysqli_query($link, "SELECT * FROM products"));
-        ?>
-        <h1>Nouveaux <span>Produits</span></h1>
+                <?php 
+                    if (isset($user_name)) echo "<h2>Informations sur les commandes de ".$user_name."</h2><br><br>";
+                ?>
         <?php
-            function print_carte($link, $IDDET){
+            if ($_SESSION["login"] == "admin" && mysqli_num_rows($commande_info)!=0){
+                echo '<table id="users_table">';
                 echo '
-                    <div class="carte">
-                        <img src="images/Produits_IDDET/'.$IDDET.'.jpg">
-                        <div class="details">';
-                                $current_product = mysqli_fetch_assoc(mysqli_query($link, "SELECT * FROM products WHERE IDDET = ".$IDDET));
-                echo '
-                                <p class="marque">'.$current_product["TYPE"].'</p>
-                                <h5>'.$current_product["NAME"].'</h5> 
-                                <p class="prix">'.(intval($current_product["PRICE"])/100).' €</p>
-                                
-                                '.
-                        '</div>
-                        <div class="items">';
-                if (isset($_SESSION["login"])){
-                    $check_request = mysqli_query($link, "SELECT * FROM favorites WHERE product_id =".$IDDET." and user_id =".$_SESSION["id"]);
-                    if (mysqli_num_rows($check_request)!=0){
-                        //le produit est déjà en fav
-                        echo '<a href="../gestion_produits/soustraction_fav.php?id='.$IDDET.'"><i class="fa fa-heart"></i></a>';
-                    }
-                    else{
-                        //le produit n'est pas en fav
-                        echo '<a href="../gestion_produits/ajout_fav.php?id='.$IDDET.'"><i class="fa-regular fa-heart"></i></a>';
-                    }
-                        
+                <tr>
+                    <th>N° de la commande</th>
+                    <th>Nom du produit</th>
+                    <th>Quantité</th>
+                    <th>Prix total</th>
+                    <th>Validation</th>
+                </tr>';
+                while ($row = mysqli_fetch_assoc($commande_info)){
+                    echo "<tr><td>";
+                    echo $row["num_commande"]."</td><td>".$row["NAME"]."</td><td>".$row["quant"]."</td><td>".(intval($row["quant"]*$row["PRICE"])/100)."</td><td>".$row["validation"]."</td>";
+                    echo '<td><a href="../gestion_produits/validation_commande.php?id='.$row["num_commande"].'" id="valider_commande">Valider</a></td>';
+                    
+                    echo "</tr>";
                 }
-                else echo '<a href="./Accueil.php?log=log"><i class="fa-regular fa-heart"></i></a>';
-                echo'   <a href="../gestion_produits/ajout_panier.php?id='.$IDDET.'"><i class="fa-solid fa-basket-shopping"></i></a>
-                        <a href="Presentation_produits?id='.$IDDET.'"><i class="fa-solid fa-eye"></i></a>
-                </div>
-            </div>
-                ';
+                echo "</table>";
             }
+            else echo "Cet utilisateur n'a aucune commande.";
 
-            echo "<div class='container'>";
-            print_carte($link, 16);
-            print_carte($link, 15);
-            print_carte($link, 1);
-            print_carte($link, 21);
-            echo "</div><div class='container'>";
-            print_carte($link, 12);
-            print_carte($link, 3);
-            print_carte($link, 9);
-            print_carte($link, 34);
-            echo "</div>";
-        
         ?>
+    </div></div><br>
 
-
-
-    </div>
-
-    <!--FIN Carte de produit 2-->
-
-    <!--Carte Menu-->
-    <div class="carte_menu">
-        <div class="container">
-            <p>Costumes<p>
-            <a href="./boutique.php?type=cosplay"><button>DECOUVRIR</button></a>
-        </div>
-        <div class="container container2">
-            <p>Peluches<p>
-            <a href="./boutique.php?type=plush"><button>DECOUVRIR</button></a>
-        </div>
-    </div>
-    <div class="carte_menu">
-        <div class="container container3">
-            <p>Accessoires<p>
-            <a href="./boutique.php?type=other"><button>DECOUVRIR</button></a>
-        </div>
-        <div class="container container4">
-            <p>Mugs<p>
-            <a href="./boutique.php?type=other"><button>DECOUVRIR</button></a>
-        </div>
-        <div class="container container5">
-            <p>Vêtements<p>
-            <a href="./boutique.php?type=clothing"><button>DECOUVRIR</button></a>
-        </div>
-    </div>
-
-    <!--FIN Carte Menu-->
-
-    <!--Garantie-->
-    <div class="garanties">
-        <div class="container">
-            <i class="fa-solid fa-truck"></i>
-            <h5>Livraison Gratuite</h5>
-            <p>Livraison payante <br>partout en France</p>
-        </div>
-        <div class="container">
-            <i class="fa-solid fa-headphones"></i>
-            <h5>Service Apres Vente</h5>
-            <p>du lundi au samedi</p>
-        </div>
-        <div class="container">
-            <i class="fa-solid fa-credit-card"></i>
-            <h5>Payement 100% Securise</h5>
-            <p>Nos transactions sont<br> 100% sécurisées. </p>
-        </div>
-    </div>
-
-    <!--FIN Garantie-->
-
-    <!--personnages-->
-    <div class="personnages">
-        <div class="container container1">
-            <img src="images/Logo/61d183173a856e0004c63349.png">
-        </div>
-        <div class="container container2">
-            <img src="images/Font/Among-Us-PNG-Isolated-Transparent.png">
-        </div>
-        <div class="container container3">
-            <img src="images/Font/Among-Us-Transparent-Images-PNG.png">
-        </div>
-    </div>
-
-    <!--FIN personnages-->
-
-    <!--Video-->
-    <div class="video">
-        <iframe src="https://www.youtube.com/embed/K_XJyKXYI9M" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    </div>
-
-    <!--FIN Video-->
-
-    <!-- newsletter2  -->
-    <div class="newsletter2">
-        <div class="container">
-            <span>Abonnez-vous à notre newsletter</span>
-            <p>Suivez toute l'actualité  en avant-première et profitez d'offres exclusives !</p>
     
-            <form>
-                <input type="email" placeholder="Votre Adresse E-mail">
-                <input type="submit" value="S'abonner">
-            </form>
-        </div>
-    </div>
 
-    <!-- FIN newsletter2  -->
+
+
+
 
 
     <!-- Footer -->
@@ -368,39 +246,27 @@
         </div>
     </footer>
     <!-- FIN Footer -->
-
+href
     <!--Scroll-Top-->
     <div class="scroll_top">
         <a href="#"><i class="fa-solid fa-arrow-up-long"></i></a>
     </div>
     <!--FIN Scroll-Top-->
 
-
-    <!--Notification-->
-    <div class="notification" id="notif">
-        <bouton class="btn_notif" id='close-notif' onclick="fermeNotif()">
-            <p>x</p>
-        </bouton>
-        <a href="./Presentation_produits.php?id=3">
-        <div class="offre">
-            <img src="images/Produits/SPECIAL.jpg">
-        </div>
-
-        <div class="offre-details">
-            <p class="offre-texte">Offre spéciale</p>
-
-            <p class="offre-titre">Pack 6 mini CREWMATE LÉGENDAIRES</p>
-        </div></a>
-
-    </div>
-    <!--FIN Notification-->
-
-    
 </body>
 </html>
 
-<?php 
-if (!isset($_SESSION["login"]) && isset($_GET["log"])){
-    echo '<script>document.getElementById("connexion").style.display="block";</script>';
-}
-?>
+<script>
+    function confirm_delete(id){
+        if (confirm("Êtes vous sûr.e de vouloir supprimer ce compte ?")){
+            if (id==-1){
+                //suppression d'un compte d'un utilisateur 
+                window.location.replace("../connexion/delete.php");
+            }
+            else{
+                //suppression d'un compte d'un utilisateur choisi par l'admin
+                window.location.replace("../connexion/delete.php?id="+id);
+            }
+        }
+    }
+</script>

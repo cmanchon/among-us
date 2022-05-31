@@ -3,7 +3,7 @@
     if (!isset($_SESSION["login"])){
         echo '
             <script lang="JavaScript">
-                window.location.replace("../pages/Accueil.php");
+                window.location.replace("../pages/Accueil.php?log=log");
             </script>
     ';
     }

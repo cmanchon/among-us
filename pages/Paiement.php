@@ -114,15 +114,36 @@
         </div>
         </form>
         <?php
+            //on définit d'abord le numéro de la commande : le numéro maximum de la table
+            $commande_table = mysqli_query($link, "SELECT * FROM commande");
+            $num_max = 0;
+            while ($row = mysqli_fetch_assoc($commande_table)){
+                if ($row['num_commande']>= $num_max) $num_max = $row['num_commande'];
+            }
+            $num_max++;
             if (isset($_POST["payer"]) && isset($_SESSION["login"])){
-                $adding_request = mysqli_query($link, "INSERT INTO paiement VALUES (".$_SESSION["id"].', "'.$_POST["client"].'", "'.$_POST["email"].'", "'.$_POST["adresse"].'", "'.$_POST["pays"].'", "'.$_POST["ville"].'", '.$_POST["carte"].', "'.$_POST["expiration"].'", '.$_POST["cvc"].")");
+                $adding_request = mysqli_query($link, "INSERT INTO paiement VALUES (".$_SESSION["id"].', "'.$_POST["client"].'", "'.$_POST["email"].'", "'.$_POST["adresse"].'", "'.$_POST["pays"].'", "'.$_POST["ville"].'", '.$_POST["carte"].', "'.$_POST["expiration"].'", '.$_POST["cvc"].", ".$num_max.")");
                 if ($adding_request){
-                        if (mysqli_query($link, "UPDATE products JOIN carts ON products.IDDET=carts.product_id SET products.QUANT = products.QUANT-carts.quant WHERE carts.user_id =".$_SESSION["id"]) && mysqli_query($link, "DELETE FROM carts WHERE user_id =".$_SESSION["id"])){
-                            //= si stock mis à jour et panier supprimé
-                            echo '<div class="carte">
-                            <p>Commande validée !<p><br>
-                            <a href="./Accueil.php">Revenir à la page d\'accueil</a> 
-                            </div>';
+                    if (isset($_GET["id"])){
+                        //si la personne a acheté 1 produit avec le bouton "acheter maintenant de présentation_produits.php
+                        $ajout_commande = mysqli_query($link, "INSERT INTO commande VALUES (".$num_max.", ".$_SESSION["id"].", ".$_GET["id"].", 1, FALSE)");
+                        $single_product = mysqli_query($link, "UPDATE products SET QUANT=QUANT-1 WHERE IDDET = ".$_GET["id"]);
+                    }    
+                    else {
+                        //sinon si la personne a validé son panier -> on ajoute dans sa commande son panier
+                        $users_cart = mysqli_query($link, "SELECT * FROM carts WHERE user_id =".$_SESSION["id"]);
+                        while ($row = mysqli_fetch_assoc($users_cart)){
+                            mysqli_query($link, "INSERT INTO commande VALUES (".$num_max.", ".$_SESSION["id"].", ".$row["product_id"].", ".$row["quant"].", FALSE)");
+                        }
+
+                        $whole_cart = mysqli_query($link, "UPDATE products JOIN carts ON products.IDDET=carts.product_id SET products.QUANT = products.QUANT-carts.quant WHERE carts.user_id =".$_SESSION["id"]) && mysqli_query($link, "DELETE FROM carts WHERE user_id =".$_SESSION["id"]);
+                    }
+                    if (isset($single_product) && $single_product && $ajout_commande || $whole_cart){
+                        //= si stock mis à jour et panier supprimé
+                        echo '<div class="carte">
+                        <p>Commande validée !<p><br>
+                        <a href="./Accueil.php">Revenir à la page d\'accueil</a> 
+                        </div>';
                         }
                 }
             }

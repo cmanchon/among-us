@@ -186,19 +186,18 @@
                     ';
                 ?><br><br>
                 <a href="../connexion/logout.php" id="logout">Se déconnecter</a><br><br><br><br>
-                <a href="../connexion/delete.php" id="delete-account">Effacer mon compte</a>
+                <a href="#" id="delete-account" onclick="confirm_delete(-1)">Effacer mon compte</a>
             </div>
         </div><br><br>
         <?php
             if ($_SESSION["login"] == "admin"){
-                $link = mysqli_connect("localhost", "root", "");
-                mysqli_select_db($link, "among_us");
                 $users_table = mysqli_query($link, "SELECT * FROM users ORDER BY id");
                 echo '<table id="users_table">';
                 while ($row = mysqli_fetch_assoc($users_table)){
                     echo "<tr><td>";
                     echo $row["id"]."</td><td>".$row["name"]."</td><td>".$row["identifiant"]."</td><td>".$row["email"]."</td>";
-                    echo "<td><a href='../connexion/delete.php?id=".$row["id"]."' id='delete_btn'> supprimer </a></td>";
+                    echo "<td><a href='#' id='delete_btn' onclick='confirm_delete(".$row["id"].")'> supprimer </a></td>";
+                    echo "<td><a href='./commande.php?id=".$row["id"]."' > Voir les commandes </a></td>";
                     echo "</tr>";
                 }
                 echo "</table>";
@@ -208,12 +207,6 @@
     </div>
 
     
-
-
-
-
-
-
     <!-- Footer -->
     <footer>
         <div class="container">
@@ -240,7 +233,7 @@
         </div>
     </footer>
     <!-- FIN Footer -->
-
+href
     <!--Scroll-Top-->
     <div class="scroll_top">
         <a href="#"><i class="fa-solid fa-arrow-up-long"></i></a>
@@ -249,3 +242,18 @@
 
 </body>
 </html>
+
+<script>
+    function confirm_delete(id){
+        if (confirm("Êtes vous sûr.e de vouloir supprimer ce compte ?")){
+            if (id==-1){
+                //suppression d'un compte d'un utilisateur 
+                window.location.replace("../connexion/delete.php");
+            }
+            else{
+                //suppression d'un compte d'un utilisateur choisi par l'admin
+                window.location.replace("../connexion/delete.php?id="+id);
+            }
+        }
+    }
+</script>
