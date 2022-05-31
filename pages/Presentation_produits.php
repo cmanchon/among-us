@@ -7,6 +7,7 @@
     <link href ="style.css" rel = "stylesheet" type = "text/css" />
     <script src="script.js"></script>
     <script src="https://kit.fontawesome.com/ffb4a8c022.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css"/>
     <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
     <link rel="shortcut icon" type="image/x-icon" href="favicon_io/apple-touch-icon.png"/>
@@ -305,7 +306,7 @@
         
     </div>
     <!-- FIN Presentation des produits-->
-
+    <a href="#" onclick="telecharger()">PDF</a>
     <!-- avis clients -->
     <div class="avis-clients">
         <?php

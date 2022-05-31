@@ -23,6 +23,7 @@ function telecharger(){
     var nom_fichier = prompt("Nom du fichier PDF :");
     //generer le pdf
     var element = document.getElementById('confirmation_paiement');
+
     var opt = {
             margin:  0,
             filename:     `${nom_fichier}.pdf`,
@@ -35,5 +36,5 @@ function telecharger(){
     }
     else {
         alert("Veuillez choisir un nom ");
-    }
+    } 
 }

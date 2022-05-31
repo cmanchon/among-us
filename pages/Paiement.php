@@ -110,7 +110,8 @@
             </div>
         </div>
         <div class="but_payer">
-            <a href="Confirmation_Paiement.html"><input type="submit" value="Valider"></a>
+            <input type="submit" name="payer" value="Valider">
+            <!-- <a href="Confirmation_Paiement.html"><input type="submit" value="Valider"></a> -->
         </div>
         </form>
         <?php
@@ -143,7 +144,12 @@
                         echo '<div class="carte">
                         <p>Commande validée !<p><br>
                         <a href="./Accueil.php">Revenir à la page d\'accueil</a> 
-                        </div>';
+                        </div>'
+                        ;
+                        echo '<script lang="JavaScript">
+                        window.location.replace("./Confirmation_Paiement.html");
+                        </script>';
+                        
                         }
                 }
             }
