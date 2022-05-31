@@ -110,7 +110,7 @@
             </div>
         </div>
         <div class="but_payer">
-            <input type="submit" name="payer" value="Valider">
+            <a href="Confirmation_Paiement.html"><input type="submit" value="Valider"></a>
         </div>
         </form>
         <?php
