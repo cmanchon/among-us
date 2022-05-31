@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href ="style.css" rel = "stylesheet" type = "text/css" />
+    <script src="script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://kit.fontawesome.com/ffb4a8c022.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css"/>
+    <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+    <title>Confirmation_Paiement</title>
+    <link rel="shortcut icon" type="image/x-icon" href="favicon_io/apple-touch-icon.png"/>
+    
+</head>
+<body>
+    <div class="confirmation_paiement" id="confirmation_paiement">
+        <div class="head">
+            <div class="container">
+                <h3>Merci pour votre commande!</h3>
+                <p>
+                    Nous souhaitons par-dessus tout que vous soyez heureux de votre<br>
+                    achat, de votre produit et de notre service. Si vous avez des <br>
+                    question, n'hésiter pas à nous contacter !<br>
+                </p>
+                <a href="https://www.univ-perp.fr/fr/contacts">facscien@univ-perp.fr - </a>
+                <a href="https://www.univ-perp.fr/fr/contacts">04 68 66 21 28</a>
+            </div>
+        </div>
+
+        <div class="texte">
+            <span>Commande effectué le : <strong>
+                <script>
+                    document.write(date)
+                </script> </strong>
+            </span>
+
+            <div class="paragraphe paragraphe1">
+                <p>Selon nos estimations, votre commande sera expédiée le <strong> <script>document.write(setdate)</script> </strong>. Cette date est 
+                   donnée à titre informatif et peut-être amenée à être modifiée. Vous serez notifié si c'est le 
+                   cas. Le délai de livraison peut varier entre 7 et 14 jours en fonction de l'adresse de 
+                   livraison
+                </p>
+            </div>
+
+            <div class="paragraphe paragraphe2">
+                <p>
+                    Vous serez averti par email lorsque votre commande sera prête à être expédiée et la 
+                    société de transport prendra contact avec vous un jour avant la livraison. Veillez à ce que 
+                    quelqu'un soit sur place pour pouvoir réceptionner la commande.
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="PDF_ACCUEIL">
+        <input class="PDF" type="submit" onclick="telecharger()" value="Télécharger le PDF">
+        <a href="Accueil.php"><input class="retour" type="submit" value="Retour"></a>
+    </div>
+
+    
+    
+
+</body>
+</html>
