@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href ="style.css" rel = "stylesheet" type = "text/css" />
-    <script type="text/javascript" src="script.js"></script>
-    <script src="https://kit.fontawesome.com/ffb4a8c022.js" crossorigin="anonymous"></script>
-    <title>Accueil</title>
-    <link rel="shortcut icon" type="image/x-icon" href="favicon_io/apple-touch-icon.png"/>
-    <?php require("../connexion/open_session.php");
-    ?>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href ="style.css" rel = "stylesheet" type = "text/css" />
+        <script type="text/javascript" src="script.js"></script>
+        <script src="https://kit.fontawesome.com/ffb4a8c022.js" crossorigin="anonymous"></script>
+        <title>Accueil</title>
+        <link rel="shortcut icon" type="image/x-icon" href="favicon_io/apple-touch-icon.png"/>
+        <?php require("../connexion/open_session.php");
+            $link = mysqli_connect("localhost", "root", "");
+            mysqli_select_db($link, "among_us");
+        ?>
 </head>
 <body>
 
@@ -45,14 +47,33 @@
         <div class="header-principal">
             <a href="Accueil.php" class="logo"><img src="images/Logo/49EF6F10-40D3-4537-8833-819406CB00D2.webp"></a>
 
-            <form class="recherche">
-                <input type="search" placeholder="Rechercher des produits" id="search">
-                <button type="submit">
+            <form class="recherche" method=POST>
+                <input type="search" placeholder="Rechercher des produits" id="search" name="barre-recherche">
+                <button type="submit" name="recherche">
                     <i class="fa fa-search"></i>
                 </button>
             </form>
 
             <?php
+                $all_products = mysqli_query($link, "SELECT * FROM products");
+                if (isset($_POST["recherche"])){
+                    while ($row = mysqli_fetch_assoc($all_products)){
+                        if (stripos($row["TYPE"], $_POST["barre-recherche"]) !== false){
+                            echo '
+                                    <script lang="JavaScript">
+                                        window.location.replace("./boutique.php?type='.$row["TYPE"].'");
+                                    </script>
+                            ';
+                        }
+                        else if (stripos($row["NAME"], $_POST["barre-recherche"])!==false || $_POST["barre-recherche"]== $row["IDDET"]){
+                            echo '
+                                    <script lang="JavaScript">
+                                        window.location.replace("./Presentation_produits.php?id='.$row["IDDET"].'");
+                                    </script>
+                            ';
+                        }
+                    }
+                }
                 if (isset($_SESSION["login"])){
                     //connecté.e
                     echo '
@@ -195,9 +216,6 @@
     <!--Carte de produit 2-->
     <div class="carte_produit2">
         <?php 
-        $link = mysqli_connect("localhost", "root", "");
-        mysqli_select_db($link, "among_us");
-        $all_products = mysqli_fetch_assoc(mysqli_query($link, "SELECT * FROM products"));
         ?>
         <h1>Nouveaux <span>Produits</span></h1>
         <?php

@@ -59,14 +59,35 @@
         <div class="header-principal">
             <a href="Accueil.php" class="logo"><img src="images/Logo/49EF6F10-40D3-4537-8833-819406CB00D2.webp"></a>
 
-            <form class="recherche">
-                <input type="search" placeholder="Rechercher des produits" id="search">
-                <button type="submit">
+            <form class="recherche" method=POST>
+                <input type="search" placeholder="Rechercher des produits" id="search" name="barre-recherche">
+                <button type="submit" name="recherche">
                     <i class="fa fa-search"></i>
                 </button>
             </form>
 
             <?php
+                $all_products = mysqli_query($link, "SELECT * FROM products");
+                if (isset($_POST["recherche"])){
+                    while ($row = mysqli_fetch_assoc($all_products)){
+                        if (stripos($row["TYPE"], $_POST["barre-recherche"]) !== false){
+                            echo '
+                                    <script lang="JavaScript">
+                                        window.location.replace("./boutique.php?type='.$row["TYPE"].'");
+                                    </script>
+                            ';
+                        }
+                        else if (stripos($row["NAME"], $_POST["barre-recherche"])!==false || $_POST["barre-recherche"]== $row["IDDET"]){
+                            echo '
+                                    <script lang="JavaScript">
+                                        window.location.replace("./Presentation_produits.php?id='.$row["IDDET"].'");
+                                    </script>
+                            ';
+                        }
+                    }
+                }
+
+
                 if (isset($_SESSION["login"])){
                     //connecté.e
                     echo '
