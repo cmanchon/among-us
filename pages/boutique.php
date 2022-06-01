@@ -325,7 +325,7 @@
 
             </div>
 
-            <p class="copyright">&copy; 2022 XXXXXXX.XX - Tous droits réservés.</p>
+            <p class="copyright">&copy; 2022 Among Us Fan Shop - Tous droits réservés.</p>
         </div>
     </footer>
     <!-- FIN Footer -->
