@@ -19,7 +19,7 @@
         if (!isset($_SESSION["login"]) || mysqli_num_rows(mysqli_query($link, "SELECT * FROM carts WHERE user_id = ".$_SESSION["id"]))==0){
             //aucun client connecté ou panier vide -> redirige vers accueil
             echo '<script lang="JavaScript">
-                    window.location.replace("./Accueil/php");
+                    window.location.replace("./Accueil.php");
                 </script>';
         }
         

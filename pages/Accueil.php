@@ -21,7 +21,9 @@
         <!--headTOP-->
         <div class ="head-top">
             <div class="promo">
-                <p><strong>OFFRE SPECIALE </strong>Pack 6 mini CREWMATE LÉGENDAIRES</p>
+                <a href="./Presentation_produits.php?id=3" id="offre-barre">
+                    <p><strong>OFFRE SPECIALE </strong>Pack 6 mini CREWMATE LÉGENDAIRES</p>
+                </a>
             </div>
 
             <div class ="monnaie">
@@ -199,7 +201,7 @@
     <div class="carte_promo">
         <div class="container container1">
             <div class="details">
-                <p>Du 23 mai<br> au 6 juin 2022</p>
+                <p>Du 32 juillet<br> au 33 juillet 2022</p>
                 <h2>-10%</h2>
                 <h3>dès 50€ d'achat</h3>
                 <button>J'EN PROFITE</button>
@@ -219,39 +221,7 @@
         ?>
         <h1>Nouveaux <span>Produits</span></h1>
         <?php
-            function print_carte($link, $IDDET){
-                echo '
-                    <div class="carte">
-                        <img src="images/Produits_IDDET/'.$IDDET.'.jpg">
-                        <div class="details">';
-                                $current_product = mysqli_fetch_assoc(mysqli_query($link, "SELECT * FROM products WHERE IDDET = ".$IDDET));
-                echo '
-                                <p class="marque">'.$current_product["TYPE"].'</p>
-                                <h5>'.$current_product["NAME"].'</h5> 
-                                <p class="prix">'.(intval($current_product["PRICE"])/100).' €</p>
-                                
-                                '.
-                        '</div>
-                        <div class="items">';
-                if (isset($_SESSION["login"])){
-                    $check_request = mysqli_query($link, "SELECT * FROM favorites WHERE product_id =".$IDDET." and user_id =".$_SESSION["id"]);
-                    if (mysqli_num_rows($check_request)!=0){
-                        //le produit est déjà en fav
-                        echo '<a href="../gestion_produits/soustraction_fav.php?id='.$IDDET.'"><i class="fa fa-heart"></i></a>';
-                    }
-                    else{
-                        //le produit n'est pas en fav
-                        echo '<a href="../gestion_produits/ajout_fav.php?id='.$IDDET.'"><i class="fa-regular fa-heart"></i></a>';
-                    }
-                        
-                }
-                else echo '<a href="./Accueil.php?log=log"><i class="fa-regular fa-heart"></i></a>';
-                echo'   <a href="../gestion_produits/ajout_panier.php?id='.$IDDET.'"><i class="fa-solid fa-basket-shopping"></i></a>
-                        <a href="Presentation_produits?id='.$IDDET.'"><i class="fa-solid fa-eye"></i></a>
-                </div>
-            </div>
-                ';
-            }
+            require("../gestion_produits/affichage_carte.php");
 
             echo "<div class='container'>";
             print_carte($link, 16);
@@ -374,11 +344,11 @@
             </div>
             
             <div class="liens">
-                <a href="#">Accueil</a>
-                <a href="#">A propos de nous</a>
-                <a href="#">Conditions Générales</a>
-                <a href="#">Cookies</a>
-                <a href="#"><i class="fa-solid fa-location-dot"></i> France</a>
+                <a href="./404.html">Accueil</a>
+                <a href="./404.html">A propos de nous</a>
+                <a href="./404.html">Conditions Générales</a>
+                <a href="./404.html">Cookies</a>
+                <a href="./404.html"><i class="fa-solid fa-location-dot"></i> France</a>
 
             </div>
 

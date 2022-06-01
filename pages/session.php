@@ -33,7 +33,9 @@
         <!--headTOP-->
         <div class ="head-top">
             <div class="promo">
-                <p><strong>OFFRE SPECIALE </strong>Pack 6 mini CREWMATE LÉGENDAIRES</p>
+                <a href="./Presentation_produits.php?id=3" id="offre-barre">
+                    <p><strong>OFFRE SPECIALE </strong>Pack 6 mini CREWMATE LÉGENDAIRES</p>
+                </a>
             </div>
 
             <div class ="monnaie">
@@ -228,8 +230,8 @@
     </div>
 
     
-    <!-- Footer -->
-    <footer>
+        <!-- Footer -->
+        <footer>
         <div class="container">
             <div class="social">
                 <p class="instagram"><i class="fa-brands fa-instagram"></i></p>
@@ -242,11 +244,11 @@
             </div>
             
             <div class="liens">
-                <a href="#">Accueil</a>
-                <a href="#">A propos de nous</a>
-                <a href="#">Conditions Générales</a>
-                <a href="#">Cookies</a>
-                <a href="#"><i class="fa-solid fa-location-dot"></i> France</a>
+                <a href="./404.html">Accueil</a>
+                <a href="./404.html">A propos de nous</a>
+                <a href="./404.html">Conditions Générales</a>
+                <a href="./404.html">Cookies</a>
+                <a href="./404.html"><i class="fa-solid fa-location-dot"></i> France</a>
 
             </div>
 
@@ -254,7 +256,8 @@
         </div>
     </footer>
     <!-- FIN Footer -->
-href
+
+
     <!--Scroll-Top-->
     <div class="scroll_top">
         <a href="#"><i class="fa-solid fa-arrow-up-long"></i></a>

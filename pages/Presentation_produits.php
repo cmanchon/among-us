@@ -34,7 +34,9 @@
         <!--headTOP-->
         <div class ="head-top">
             <div class="promo">
-                <p><strong>OFFRE SPECIALE </strong>Pack 6 mini CREWMATE LÉGENDAIRES</p>
+                <a href="./Presentation_produits.php?id=3" id="offre-barre">
+                    <p><strong>OFFRE SPECIALE </strong>Pack 6 mini CREWMATE LÉGENDAIRES</p>
+                </a>
             </div>
 
             <div class ="monnaie">
@@ -264,24 +266,24 @@
         </div>
 
         <div class="produits_similaire">
-            <!-- <div class= "container produit">
-                <a href="#"><img src="images/Produits/blanc.jpg"></a>
-            </div>
-            <div class="container produit">
-                <a href="" class=""><img src="images/Produits/jaune.jpg"></a>
-            </div>
-            <div class="container produit">
-                <a href="#" class=""><img src="images/Produits/rouge1.jpg"></a>
-            </div>
-            <div class="container produit">
-                <a href="" class=""><img src="images/Produits/rose.jpg"></a>
-            </div> -->
             <?php
                 if ($IDDET>=5 && $IDDET<=10){
                     $id_of_plushes = \array_diff(range(5, 10), [$IDDET]);
                     shuffle($id_of_plushes);
                     array_pop($id_of_plushes);
                     foreach ($id_of_plushes as $i){
+                        echo ' 
+                        <div class="container produit">
+                            <a href="./Presentation_produits?id='.$i.'" class=""><img src="images/Produits_IDDET/'.$i.'.jpg"></a>
+                        </div>
+                        ';
+                    }
+                }
+                else if ($IDDET>=11 && $IDDET<=16){
+                    $id_of_cosplay = \array_diff(range(11, 16), [$IDDET]);
+                    shuffle($id_of_cosplay);
+                    array_pop($id_of_cosplay);
+                    foreach ($id_of_cosplay as $i){
                         echo ' 
                         <div class="container produit">
                             <a href="./Presentation_produits?id='.$i.'" class=""><img src="images/Produits_IDDET/'.$i.'.jpg"></a>
@@ -306,7 +308,7 @@
         
     </div>
     <!-- FIN Presentation des produits-->
-    <a href="#" onclick="telecharger()">PDF</a>
+
     <!-- avis clients -->
     <div class="avis-clients">
         <?php
@@ -361,105 +363,17 @@
     <div class="container_carte_produit" visibility=hidden>
 
         <div class="carte_produit2">
-            <div class="container">
-            <div class="carte">
-                <img src="images/Produits/familial.jpg">
-                <div class="details">
-                    <?php
-                        $IDDET = 16;
-                        $current_product = mysqli_fetch_assoc(mysqli_query($link, "SELECT * FROM products WHERE IDDET = ".$IDDET));
-                        echo '
-                        <p class="marque">'.$current_product["TYPE"].'</p>
-                        <h5>'.$current_product["NAME"].'</h5> 
-                        <p class="prix">'.(intval($current_product["PRICE"])/100).' €</p>
-                        
-                        ';
-                    ?>
-                </div>
-                <div class="items">
-                    <?php 
-                        echo '
-                        <a href="#"><i class="fa-regular fa-heart"></i></a>
-                        <a href="../gestion_produits/ajout_panier.php?id='.$IDDET.'"><i class="fa-solid fa-basket-shopping"></i></a>
-                        <a href="Presentation_produits?id='.$IDDET.'"><i class="fa-solid fa-eye"></i></a>
-                        ';
-                    ?>
-                </div>
-            </div>
-                <div class="carte">
-                    <img src="images/Produits/gonflable_cyan.jpg">
-                    <div class="details">
-                    <?php
-                        $IDDET = 15;
-                        $current_product = mysqli_fetch_assoc(mysqli_query($link, "SELECT * FROM products WHERE IDDET = ".$IDDET));
-                        echo '
-                        <p class="marque">'.$current_product["TYPE"].'</p>
-                        <h5>'.$current_product["NAME"].'</h5> 
-                        <p class="prix">'.(intval($current_product["PRICE"])/100).' €</p>
-                        
-                        ';
-                    ?>
-                </div>
-                <div class="items">
-                    <?php 
-                        echo '
-                        <a href="#"><i class="fa-regular fa-heart"></i></a>
-                        <a href="../gestion_produits/ajout_panier.php?id='.$IDDET.'"><i class="fa-solid fa-basket-shopping"></i></a>
-                        <a href="Presentation_produits?id='.$IDDET.'"><i class="fa-solid fa-eye"></i></a>
-                        ';
-                    ?>
-                </div>          
-                </div>
-                <div class="carte">
-                    <img src="images/Produits/CHAPEAU.jpg">
-                    <div class="details">
-                    <?php
-                        $IDDET = 1;
-                        $current_product = mysqli_fetch_assoc(mysqli_query($link, "SELECT * FROM products WHERE IDDET = ".$IDDET));
-                        echo '
-                        <p class="marque">'.$current_product["TYPE"].'</p>
-                        <h5>'.$current_product["NAME"].'</h5> 
-                        <p class="prix">'.(intval($current_product["PRICE"])/100).' €</p>
-                        
-                        ';
-                    ?>
-                </div>
-                <div class="items">
-                    <?php 
-                        echo '
-                        <a href="#"><i class="fa-regular fa-heart"></i></a>
-                        <a href="../gestion_produits/ajout_panier.php?id='.$IDDET.'"><i class="fa-solid fa-basket-shopping"></i></a>
-                        <a href="Presentation_produits?id='.$IDDET.'"><i class="fa-solid fa-eye"></i></a>
-                        ';
-                    ?>
-                </div>          
-                </div>
-                <div class="carte">
-                    <img src="images/Produits/jogging.jpg">
-                    <div class="details">
-                    <?php
-                        $IDDET = 21;
-                        $current_product = mysqli_fetch_assoc(mysqli_query($link, "SELECT * FROM products WHERE IDDET = ".$IDDET));
-                        echo '
-                        <p class="marque">'.$current_product["TYPE"].'</p>
-                        <h5>'.$current_product["NAME"].'</h5> 
-                        <p class="prix">'.(intval($current_product["PRICE"])/100).' €</p>
-                        
-                        ';
-                    ?>
-                </div>
-                <div class="items">
-                    <?php 
-                        echo '
-                        <a href="#"><i class="fa-regular fa-heart"></i></a>
-                        <a href="../gestion_produits/ajout_panier.php?id='.$IDDET.'"><i class="fa-solid fa-basket-shopping"></i></a>
-                        <a href="Presentation_produits?id='.$IDDET.'"><i class="fa-solid fa-eye"></i></a>
-                        ';
-                    ?>
-                </div>           
-                </div>
-            </div>
-        </div>
+        <?php
+            require("../gestion_produits/affichage_carte.php");
+
+            echo "<div class='container'>";
+            print_carte($link, 16);
+            print_carte($link, 15);
+            print_carte($link, 1);
+            print_carte($link, 21);
+            echo "</div>";
+        ?>
+        </div>    
     </div>    
 
     <!--FIN Autre articles-->
@@ -517,11 +431,11 @@
             </div>
             
             <div class="liens">
-                <a href="#">Accueil</a>
-                <a href="#">A propos de nous</a>
-                <a href="#">Conditions Générales</a>
-                <a href="#">Cookies</a>
-                <a href="#"><i class="fa-solid fa-location-dot"></i> France</a>
+                <a href="./404.html">Accueil</a>
+                <a href="./404.html">A propos de nous</a>
+                <a href="./404.html">Conditions Générales</a>
+                <a href="./404.html">Cookies</a>
+                <a href="./404.html"><i class="fa-solid fa-location-dot"></i> France</a>
 
             </div>
 
@@ -529,6 +443,7 @@
         </div>
     </footer>
     <!-- FIN Footer -->
+
 
     <!--Scroll-Top-->
     <div class="scroll_top">
