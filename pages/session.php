@@ -23,7 +23,7 @@
         $user_info = mysqli_fetch_assoc(mysqli_query($link, "SELECT * FROM users WHERE id =".$_SESSION["id"]));
         
     ?>
-    <title>Mon compte</title>
+    <title>Among Us Fan Shop - Mon compte</title>
     <link rel="shortcut icon" type="image/x-icon" href="favicon_io/apple-touch-icon.png"/>
 </head>
 <body>
@@ -250,7 +250,7 @@
 
             </div>
 
-            <p class="copyright">&copy; 2022 XXXXXXX.XX - Tous droits réservés.</p>
+            <p class="copyright">&copy; 2022 Among Us Fan Shop - Tous droits réservés.</p>
         </div>
     </footer>
     <!-- FIN Footer -->
