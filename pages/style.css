@@ -2279,6 +2279,22 @@ body .panier .container-panier .recap #recap-button-payer:hover{
 
 /* FIN Confirmation_commande */
 
+/* 404*/
+
+.vide {
+    width: 70%;
+    margin-top: 30px;
+    background-color: rgba(0, 0, 0, 0.942);
+    padding-right: 100%;
+}
+
+.vide img {
+    width: 100%;
+    margin-left: 21%;
+}
+
+/* FIN 404 */
+
 
 /* Responsive */
 
