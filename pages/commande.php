@@ -32,7 +32,7 @@
         }
         
     ?>
-    <title>Commandes</title>
+    <title>Among Us Fan Shop - Commandes</title>
     <link rel="shortcut icon" type="image/x-icon" href="favicon_io/apple-touch-icon.png"/>
 </head>
 <body>
@@ -263,7 +263,7 @@
 
             </div>
 
-            <p class="copyright">&copy; 2022 XXXXXXX.XX - Tous droits réservés.</p>
+            <p class="copyright">&copy; 2022 Among Us Fan Shop - Tous droits réservés.</p>
         </div>
     </footer>
     <!-- FIN Footer -->
