@@ -7,7 +7,7 @@
         <link href ="style.css" rel = "stylesheet" type = "text/css" />
         <script type="text/javascript" src="script.js"></script>
         <script src="https://kit.fontawesome.com/ffb4a8c022.js" crossorigin="anonymous"></script>
-        <title>Among Us Fan Shop - Accueil</title>
+        <title>Accueil - Among Us Fan Shop</title>
         <link rel="shortcut icon" type="image/x-icon" href="favicon_io/apple-touch-icon.png"/>
         <?php require("../connexion/open_session.php");
             $link = mysqli_connect("localhost", "root", "");

@@ -9,7 +9,7 @@
     <script src="https://kit.fontawesome.com/ffb4a8c022.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css"/>
     <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
-    <title>Among Us Fan Shop - Paiement en ligne</title>
+    <title>Paiement en ligne - Among Us Fan Shop</title>
     <link rel="shortcut icon" type="image/x-icon" href="favicon_io/apple-touch-icon.png"/>
     <?php
         require("../connexion/open_session.php");
@@ -34,6 +34,9 @@
                 <div class="details">
                     <h3>Paiement en ligne</h3>
                     <h4>Site sécurisé   <i class="fa-solid fa-lock"></i></h4>
+                </div>
+                <div class="continuer_achat">
+                        <a href="Accueil.php">CONTINUER MES ACHATS <i class="fa-solid fa-chevron-right"></i></a>
                 </div>
             </div>
         </div>

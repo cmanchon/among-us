@@ -24,7 +24,7 @@
         }
         else $ORDER = "IDDET ASC";
         echo '
-        <title>'.$TYPE.'</title>
+        <title>'.$TYPE.' - Among Us Fan Shop</title>
         ';
         $all_products = mysqli_query($link, "SELECT * FROM products");
     ?>

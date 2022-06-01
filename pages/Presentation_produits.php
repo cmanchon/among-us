@@ -24,7 +24,7 @@
     ';
     }
     $current_product = mysqli_fetch_assoc(mysqli_query($link, "SELECT * FROM products WHERE IDDET=".$IDDET));
-    echo '<title>'.$current_product["NAME"].'</title>';
+    echo '<title>'.$current_product["NAME"].' - Among Us Fan Shop</title>';
     ?>
 </head>
 <body>

@@ -1,0 +1,7 @@
+pour importer un fichier .sql avec une ligne de commande :
+
+- se placer dans C:\wamp64\bin\mysql\mysql8.0.27\bin
+
+- mysql -u root -p among_us < chemin_du_fichier_.sql
+
+(among_us : base de données déjà existante)

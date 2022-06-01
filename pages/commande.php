@@ -32,7 +32,7 @@
         }
         
     ?>
-    <title>Among Us Fan Shop - Commandes</title>
+    <title>Commandes - Among Us Fan Shop</title>
     <link rel="shortcut icon" type="image/x-icon" href="favicon_io/apple-touch-icon.png"/>
 </head>
 <body>
