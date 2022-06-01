@@ -7,7 +7,7 @@
         <link href ="style.css" rel = "stylesheet" type = "text/css" />
         <script type="text/javascript" src="script.js"></script>
         <script src="https://kit.fontawesome.com/ffb4a8c022.js" crossorigin="anonymous"></script>
-        <title>Accueil</title>
+        <title>Among Us Fan Shop</title>
         <link rel="shortcut icon" type="image/x-icon" href="favicon_io/apple-touch-icon.png"/>
         <?php require("../connexion/open_session.php");
             $link = mysqli_connect("localhost", "root", "");
@@ -382,7 +382,7 @@
 
             </div>
 
-            <p class="copyright">&copy; 2022 XXXXXXX.XX - Tous droits réservés.</p>
+            <p class="copyright">&copy; 2022 Among Us Fan Shop - Tous droits réservés.</p>
         </div>
     </footer>
     <!-- FIN Footer -->
