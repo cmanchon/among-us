@@ -199,7 +199,7 @@
     <div class="carte_promo">
         <div class="container container1">
             <div class="details">
-                <p>Du 32 juillet<br> au 33 juillet 2022</p>
+                <p>Du 23 mai<br> au 6 juin 2022</p>
                 <h2>-10%</h2>
                 <h3>dès 50€ d'achat</h3>
                 <button>J'EN PROFITE</button>
