@@ -1,18 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href ="style.css" rel = "stylesheet" type = "text/css" />
-        <script type="text/javascript" src="script.js"></script>
-        <script src="https://kit.fontawesome.com/ffb4a8c022.js" crossorigin="anonymous"></script>
-        <title>Accueil - Among Us Fan Shop</title>
-        <link rel="shortcut icon" type="image/x-icon" href="favicon_io/apple-touch-icon.png"/>
-        <?php require("../connexion/open_session.php");
-            $link = mysqli_connect("localhost", "root", "");
-            mysqli_select_db($link, "among_us");
-        ?>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href ="style.css" rel = "stylesheet" type = "text/css" />
+    <script src="script.js"></script>
+    <script src="https://kit.fontawesome.com/ffb4a8c022.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css"/>
+    <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+    <?php
+
+        require("../connexion/open_session.php");
+        $link = mysqli_connect("localhost", "root", "");
+        mysqli_select_db($link, "among_us");
+     
+    ?>
+    <title>Erreur - Among Us Fan Shop</title>
+    <link rel="shortcut icon" type="image/x-icon" href="favicon_io/apple-touch-icon.png"/>
 </head>
 <body>
 
@@ -50,7 +55,7 @@
             <a href="Accueil.php" class="logo"><img src="images/Logo/49EF6F10-40D3-4537-8833-819406CB00D2.webp"></a>
 
             <form class="recherche" method=POST>
-                <input type="search" placeholder="Rechercher des produits" id="search" name="barre-recherche">
+                <input type="search" placeholder="Rechercher des produits" id="search" name = "barre-recherche">
                 <button type="submit" name="recherche">
                     <i class="fa fa-search"></i>
                 </button>
@@ -76,6 +81,8 @@
                         }
                     }
                 }
+
+
                 if (isset($_SESSION["login"])){
                     //connecté.e
                     echo '
@@ -181,156 +188,15 @@
     </header>
     <!-- FIN Header-->
 
-    <!--Image de presentation-->
-    <div class="spot">
-        <div class="container">
-          <div class="slider">
-              <div class="slides">
-                <img src="images/Font/5.jpg">
-            </div>
-  
-            <div class="slides">
-                <img src="images/Font/7.jpg">
-            </div> 
-          </div>
-        </div>
+         <!--404-->
+
+    <div class="vide">
+        <img src="images/Font/4042.jpg" alt="">
     </div>
 
-
-    <!--Carte_promo-->
-    <div class="carte_promo">
-        <div class="container container1">
-            <div class="details">
-                <p>Du 32 juillet<br> au 33 juillet 2022</p>
-                <h2>-10%</h2>
-                <h3>dès 50€ d'achat</h3>
-                <button>J'EN PROFITE</button>
-                <a href="#">*Voir les conditions</a>
-            </div>
-        </div>
-        <div class="container container2">
-        </div>
-    </div>
-
-    <!--FIN Carte_promo-->
-
-
-    <!--Carte de produit 2-->
-    <div class="carte_produit2">
-        <?php 
-        ?>
-        <h1>Nouveaux <span>Produits</span></h1>
-        <?php
-            require("../gestion_produits/affichage_carte.php");
-
-            echo "<div class='container'>";
-            print_carte($link, 16);
-            print_carte($link, 15);
-            print_carte($link, 1);
-            print_carte($link, 21);
-            echo "</div><div class='container'>";
-            print_carte($link, 12);
-            print_carte($link, 3);
-            print_carte($link, 9);
-            print_carte($link, 34);
-            echo "</div>";
-        
-        ?>
-
-
-
-    </div>
-
-    <!--FIN Carte de produit 2-->
-
-    <!--Carte Menu-->
-    <div class="carte_menu">
-        <div class="container">
-            <p>Costumes<p>
-            <a href="./boutique.php?type=cosplay"><button>DECOUVRIR</button></a>
-        </div>
-        <div class="container container2">
-            <p>Peluches<p>
-            <a href="./boutique.php?type=plush"><button>DECOUVRIR</button></a>
-        </div>
-    </div>
-    <div class="carte_menu">
-        <div class="container container3">
-            <p>Accessoires<p>
-            <a href="./boutique.php?type=other"><button>DECOUVRIR</button></a>
-        </div>
-        <div class="container container4">
-            <p>Mugs<p>
-            <a href="./boutique.php?type=other"><button>DECOUVRIR</button></a>
-        </div>
-        <div class="container container5">
-            <p>Vêtements<p>
-            <a href="./boutique.php?type=clothing"><button>DECOUVRIR</button></a>
-        </div>
-    </div>
-
-    <!--FIN Carte Menu-->
-
-    <!--Garantie-->
-    <div class="garanties">
-        <div class="container">
-            <i class="fa-solid fa-truck"></i>
-            <h5>Livraison Gratuite</h5>
-            <p>Livraison payante <br>partout en France</p>
-        </div>
-        <div class="container">
-            <i class="fa-solid fa-headphones"></i>
-            <h5>Service Apres Vente</h5>
-            <p>du lundi au samedi</p>
-        </div>
-        <div class="container">
-            <i class="fa-solid fa-credit-card"></i>
-            <h5>Payement 100% Securise</h5>
-            <p>Nos transactions sont<br> 100% sécurisées. </p>
-        </div>
-    </div>
-
-    <!--FIN Garantie-->
-
-    <!--personnages-->
-    <div class="personnages">
-        <div class="container container1">
-            <img src="images/Logo/61d183173a856e0004c63349.png">
-        </div>
-        <div class="container container2">
-            <img src="images/Font/Among-Us-PNG-Isolated-Transparent.png">
-        </div>
-        <div class="container container3">
-            <img src="images/Font/Among-Us-Transparent-Images-PNG.png">
-        </div>
-    </div>
-
-    <!--FIN personnages-->
-
-    <!--Video-->
-    <div class="video">
-        <iframe src="https://www.youtube.com/embed/K_XJyKXYI9M" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    </div>
-
-    <!--FIN Video-->
-
-    <!-- newsletter2  -->
-    <div class="newsletter2">
-        <div class="container">
-            <span>Abonnez-vous à notre newsletter</span>
-            <p>Suivez toute l'actualité  en avant-première et profitez d'offres exclusives !</p>
+        <!--FIN 404-->
     
-            <form>
-                <input type="email" placeholder="Votre Adresse E-mail">
-                <input type="submit" value="S'abonner">
-            </form>
-        </div>
-    </div>
-
-    <!-- FIN newsletter2  -->
-
-
-    <!-- Footer -->
+        <!-- Footer -->
     <footer>
         <div class="container">
             <div class="social">
@@ -357,38 +223,12 @@
     </footer>
     <!-- FIN Footer -->
 
+
     <!--Scroll-Top-->
     <div class="scroll_top">
         <a href="#"><i class="fa-solid fa-arrow-up-long"></i></a>
     </div>
     <!--FIN Scroll-Top-->
 
-
-    <!--Notification-->
-    <div class="notification" id="notif">
-        <bouton class="btn_notif" id='close-notif' onclick="fermeNotif()">
-            <p>x</p>
-        </bouton>
-        <a href="./Presentation_produits.php?id=3">
-        <div class="offre">
-            <img src="images/Produits/SPECIAL.jpg">
-        </div>
-
-        <div class="offre-details">
-            <p class="offre-texte">Offre spéciale</p>
-
-            <p class="offre-titre">Pack 6 mini CREWMATE LÉGENDAIRES</p>
-        </div></a>
-
-    </div>
-    <!--FIN Notification-->
-
-    
 </body>
 </html>
-
-<?php 
-if (!isset($_SESSION["login"]) && isset($_GET["log"])){
-    echo '<script>document.getElementById("connexion").style.display="block";</script>';
-}
-?>

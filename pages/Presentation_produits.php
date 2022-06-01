@@ -431,11 +431,11 @@
             </div>
             
             <div class="liens">
-                <a href="./404.html">Accueil</a>
-                <a href="./404.html">A propos de nous</a>
-                <a href="./404.html">Conditions Générales</a>
-                <a href="./404.html">Cookies</a>
-                <a href="./404.html"><i class="fa-solid fa-location-dot"></i> France</a>
+                <a href="./404.php">Accueil</a>
+                <a href="./404.php">A propos de nous</a>
+                <a href="./404.php">Conditions Générales</a>
+                <a href="./404.php">Cookies</a>
+                <a href="./404.php"><i class="fa-solid fa-location-dot"></i> France</a>
 
             </div>
 
